@@ -26,11 +26,17 @@ export default function Menu() {
             current.classList.remove('bg-gray-100')
         }else if(current.classList.contains('collapse') && !subMenu.style.maxHeight){
             if(menu.current){
+                const menuIcon = menu.current.querySelector('.dir')
                 menu.current.classList.remove('bg-gray-100')
                 menu.current.nextElementSibling.style.maxHeight = null
+                menuIcon.classList.add('fa-chevron-right')
+                menuIcon.classList.remove('fa-chevron-down')
             }
             if(dashboardRef.current){
+                const dashIcon = dashboardRef.current.querySelector('.dir')
                 dashboardRef.current.nextElementSibling.style.maxHeight = null
+                dashIcon.classList.add('fa-chevron-right')
+                dashIcon.classList.remove('fa-chevron-down')
                 dashboardRef.current = null
             }
             menu.current = current
@@ -39,7 +45,10 @@ export default function Menu() {
 
         if(current.classList.contains('dashBoard') && !subMenu.style.maxHeight){
             if(menu.current){
+                const menu__icon = menu.current.querySelector('.dir')
                 menu.current.classList.remove('bg-gray-100')
+                menu__icon.classList.add('fa-chevron-right')
+                menu__icon.classList.remove('fa-chevron-down')
                 menu.current.nextElementSibling.style.maxHeight = null
                 menu.current = null
             }
