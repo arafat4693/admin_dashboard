@@ -78,18 +78,18 @@ export default function Menu() {
 
                 <div className="dashBoard__container">
                     <div onClick={openSubMenu} className="dashBoard bg-gray-100 rounded-lg flex justify-between px-6 py-5 cursor-pointer mb-2 hover:pl-8 transition-all duration-300">
-                        <div className="name flex items-center gap-4 pointer-events-none">
+                        <div className="name flex items-center gap-4 pointer-events-none select-none">
                             <i className="fas fa-home text-2xl text-gray-700"></i>
                             <h3 className="font-medium text-2xl text-gray-600 tracking-wider">dashboards</h3>
                         </div>
-                        <div className="arrow flex items-center gap-5 pointer-events-none">
+                        <div className="arrow flex items-center gap-5 pointer-events-none select-none">
                             <span className="flex items-center justify-center bg-orange-200 w-9 h-9 rounded-full text-xl text-orange-600 font-semibold">2</span>
                             <i className="fas fa-chevron-right text-gray-400 text-lg dir"></i>
                         </div>
                     </div>
 
                     <div className="submenu transition-all duration-400 overflow-hidden max-h-0">
-                        <div onClick={activeMenu} ref={menuRef} className="rounded-lg flex items-end gap-4 cursor-pointer pl-7 py-5 hover:pl-9 transition-all duration-300 active__style">
+                        <div onClick={activeMenu} ref={menuRef} className="select-none rounded-lg flex items-end gap-4 cursor-pointer pl-7 py-5 hover:pl-9 transition-all duration-300 active__style">
                             <i className="far fa-circle text-lg pointer-events-none"></i>
                             <h3 className="font-normal tracking-wide text-2xl pointer-events-none">analytics</h3>
                         </div>
@@ -98,7 +98,7 @@ export default function Menu() {
                 </div>
 
                 <div className="pages pt-12">
-                    <h3 className="font-medium text-gray-400 text-2xl uppercase pb-4 pl-6">apps & pages</h3>
+                    <h3 className="font-medium text-gray-400 text-2xl uppercase pb-4 pl-6 select-none pointer-events-none">apps & pages</h3>
                     <SubMenu name="Email" activeMenu={activeMenu} iconName="far fa-envelope"/>
                     <SubMenu name="Chat" activeMenu={activeMenu} iconName="far fa-comment-alt"/>
                     <SubMenu name="Todo" activeMenu={activeMenu} iconName="far fa-check-square"/>
@@ -143,7 +143,7 @@ export default function Menu() {
                 </div>
 
                 <div className="charts pt-7">
-                    <h3 className="font-medium text-gray-400 text-2xl uppercase pb-3 pl-6">charts</h3>
+                    <h3 className="font-medium text-gray-400 text-2xl uppercase pb-3 pl-6 select-none pointer-events-none">charts</h3>
                     <Collapse iconName="fas fa-chart-pie" openSubMenu={openSubMenu} name="Charts">
                         <SubMenu name="Apex" activeMenu={activeMenu} iconName="far fa-circle"/>
                         <SubMenu name="ChartJS" activeMenu={activeMenu} iconName="far fa-circle"/>
