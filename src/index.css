@@ -82,3 +82,12 @@ body {
 .menu__container {
   height: calc(100% - 6rem);
 }
+
+.apexcharts-menu-icon,
+.apexcharts-reset-icon,
+.apexcharts-pan-icon,
+.apexcharts-zoom-icon,
+.apexcharts-zoomin-icon,
+.apexcharts-zoomout-icon {
+  display: none;
+}

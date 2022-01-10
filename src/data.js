@@ -81,4 +81,30 @@ const contacts = [
     }
 ]
 
-export {contacts, files, pages}
+const barChart = {
+    series: [{
+        data: [448, 540, 690, 1100, 1380]
+      }],
+      options: {
+        chart: {
+          type: 'bar',
+        },
+        plotOptions: {
+          bar: {
+            borderRadius: 4,
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        yaxis: {
+          show: false,
+        },
+        tooltip: {
+            enabled: false,
+            offsetX: 0,
+        },
+      },
+    }
+
+export {contacts, files, pages, barChart}

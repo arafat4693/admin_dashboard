@@ -5,7 +5,7 @@ export default function Header() {
     const [openSrc, setOpenSrc] = useState(false)
 
     return (
-        <header className="header w-full bg-white py-6 px-8 rounded-lg shadow-md flex justify-between items-center relative">
+        <header className="header w-full bg-white py-6 px-8 rounded-lg shadow-md flex justify-between items-center z-50 sticky top-0 left-0">
             {openSrc ?
             <Search setOpenSrc={setOpenSrc}/>
             : <>
