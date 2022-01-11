@@ -1,11 +1,12 @@
 import React,{useState} from 'react'
 import News from './News'
 import ReactApexChart from 'react-apexcharts'
-// import Chart from 'react-apexcharts'
-import {barChart} from '../data'
+import {barChart, lineChart, pieChart} from '../data'
 
 export default function ECommerce() {
-    const [bar, setBar] = useState(barChart)
+    const [bar] = useState(barChart)
+    const [line] = useState(lineChart)
+    const [donut] = useState(pieChart)
 
     return (
         <section className="eCommerce my-8">
@@ -23,24 +24,50 @@ export default function ECommerce() {
                         <h3 className="font-medium text-3xl text-gray-600">statistics</h3>
                         <p className="font-normal text-lg text-gray-500 normal-case tracking-wider">Updated 2 months ago</p>
                     </div>
-                    <div className="statisticsResult p-12 flex items-center justify-between">
-                        <News icon="fas fa-chart-line" bgColor="blue" amount="320k" name="sales"/>
-                        <News icon="far fa-user" bgColor="teal" amount="6.349k" name="customers"/>
-                        <News icon="fas fa-cube" bgColor="red" amount="1.349k" name="products"/>
-                        <News icon="fas fa-dollar-sign" bgColor="green" amount="6748k" name="revenue"/>
+                    <div className="statisticsResult p-12 pr-24 flex items-center justify-between">
+                        <News icon="fas fa-chart-line" bgColor="bg-blue-100" color="text-blue-600" amount="320k" name="sales"/>
+                        <News icon="far fa-user" color="text-teal-600" bgColor="bg-teal-100" amount="6.349k" name="customers"/>
+                        <News icon="fas fa-cube" color="text-red-600" bgColor="bg-red-100" amount="1.349k" name="products"/>
+                        <News icon="fas fa-dollar-sign" color="text-green-600" bgColor="bg-green-100" amount="6748k" name="revenue"/>
                     </div>
                 </div>
             </div>
 
             <div className="eCommerce__reports grid grid-cols-3 gap-10">
                 <div className="reportNews grid grid-cols-2 gap-8">
-                    <div className="p-6 pb-2 bg-white shadow-lg rounded-xl">
+                    <div className="pt-8 pl-8 bg-white shadow-lg rounded-xl">
                         <p className="font-medium text-2xl text-gray-500">Orders</p>
                         <h2 className="font-semibold text-4xl text-gray-600 my-3">4,50k</h2>
-                        <ReactApexChart options={bar.options} series={bar.series} type="bar" height={70}/>
+                        <div className="-ml-5 -mt-3">
+                            <ReactApexChart options={bar.options} series={bar.series} type="bar" height={100} width={150}/>
+                        </div>
                     </div>
-                    <div className="">2</div>
-                    <div className="">3</div>
+ 
+                    <div className="pt-8 pl-8 bg-white shadow-lg rounded-xl">
+                        <p className="font-medium text-2xl text-gray-500">Profit</p>
+                        <h2 className="font-semibold text-4xl text-gray-600 my-3">3.62k</h2>
+                        <div className="-mt-6">
+                            <ReactApexChart options={line.options} series={line.series} type="line" height={108} width={140}/>
+                        </div>
+                    </div>
+
+                    <div className="col-span-2 bg-white px-7 py-8 grid grid-cols-2 shadow-lg rounded-xl">
+                        <div className="left">
+                            <h2 className="text-3xl text-gray-500 font-medium">earnings</h2>
+                            <p className="text-xl text-gray-500 font-normal tracking-wider mt-6">this month</p>
+                            <h2 className="text-2xl text-gray-500 font-medium">$5652.14</h2>
+                            <p className="text-lg text-gray-400 font-normal tracking-wider normal-case mt-6">
+                                <span className="text-gray-500 font-semibold leading-10">78.6%</span>
+                                 more earnings than last three months
+                            </p>
+                        </div>
+
+                        <div className="right">
+                            <div className="pieChart pt-4">
+                                <ReactApexChart options={donut.options} series={donut.series} type="donut"/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className="reportRevenue bg-white col-span-2 shadow-lg rounded-xl overflow-hidden">
                     jsjs
