@@ -6,6 +6,15 @@
   .active__style {
     @apply bg-blue-500 shadow-blue-400 shadow-md text-white;
   }
+  .buttonHover {
+    @apply bg-blue-100 text-blue-500;
+  }
+  .th__style {
+    @apply normal-case py-4 px-11 text-gray-600 text-xl font-semibold;
+  }
+  .scheduleImg__style {
+    @apply w-14 h-14 rounded-full border-2 border-solid border-white -ml-4 cursor-pointer transition-all duration-500 ease-out hover:scale-105 hover:-mt-1;
+  }
 }
 
 * {

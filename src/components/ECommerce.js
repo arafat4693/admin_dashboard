@@ -1,19 +1,27 @@
 import React,{useState} from 'react'
 import News from './News'
 import ReactApexChart from 'react-apexcharts'
-import {barChart, lineChart, pieChart, doubleBarChart, dashesLineChart} from '../data'
+import {barChart, lineChart, pieChart, doubleBarChart, customAngleChart, radialBarChart} from '../data'
+import ReportRight from './ReportRight'
+import Table from './Table'
+import TimeAddress from './TimeAddress'
+import { NewspaperIcon, LocationMarkerIcon, QuestionMarkCircleIcon, DotsVerticalIcon, ChevronDoubleDownIcon, CheckIcon, CurrencyDollarIcon, CreditCardIcon, TrendingUpIcon, HeartIcon } from '@heroicons/react/outline'
+import ReactTooltip from 'react-tooltip';
+import BrowserCard from './BrowserCard'
+import TransIcon from './TransIcon'
+import Footer from './Footer'
 
 export default function ECommerce() {
     const [bar] = useState(barChart)
     const [line] = useState(lineChart)
     const [donut] = useState(pieChart)
     const [doubleBar] = useState(doubleBarChart)
-    const [dashedLine] = useState(dashesLineChart)
+    const [customAngle] = useState(customAngleChart)
 
     return (
-        <section className="eCommerce my-8">
+        <section className="eCommerce">
 
-            <div className="eCommerce__statistics grid grid-cols-3 gap-10 mb-8">
+            <div className="eCommerce__statistics grid grid-cols-3 gap-10 my-8">
                 <div className="congrats bg-white shadow-lg p-7 rounded-xl overflow-hidden relative">
                     <img src="images/medal.png" alt="medal" className="absolute top-0 right-4"/>
                     <h3 className="font-medium text-2xl text-gray-600">congratulations 🎉 sunny!</h3>
@@ -35,7 +43,7 @@ export default function ECommerce() {
                 </div>
             </div>
 
-            <div className="eCommerce__reports grid grid-cols-3 gap-10">
+            <div className="eCommerce__reports grid grid-cols-3 gap-10 mb-8">
                 <div className="reportNews grid grid-cols-2 gap-8">
                     <div className="pt-8 pl-8 bg-white shadow-lg rounded-xl">
                         <p className="font-medium text-2xl text-gray-500">Orders</p>
@@ -93,17 +101,102 @@ export default function ECommerce() {
                             <ReactApexChart options={doubleBar.options} series={doubleBar.series} type="bar" height={270} width={490}/>
                         </div>
                     </div>
-                    
-                    <div className="right px-12 py-9">
-                        <h2 className="text-4xl text-gray-600 font-medium text-center">$15,463</h2>
-                        <p className=" mt-2 text-2xl text-gray-500 font-normal text-center"><span className="font-semibold">Budget:</span> 36,632</p>
-                        <div className="dashline">
-                            <ReactApexChart options={dashedLine.options} series={dashedLine.series} type="line" height={125} width={'100%'} />
+
+                    <ReportRight/>
+                </div>
+            </div>
+
+            <div className="eCommerce__property grid grid-cols-3 gap-10 mb-8">
+                <div className="properties bg-white col-span-2 shadow-lg rounded-xl overflow-hidden">
+                    <Table/>
+                </div>
+                <div className="schedule bg-white shadow-lg rounded-xl overflow-hidden">
+                    <div className="scheduleImage h-72 w-full bg-indigo-100">
+                        <img src="images/office.png" alt="storyset image" className="w-full h-full object-cover"/>
+                    </div>
+                    <div className="scheduleInfo px-7">
+                        <div className="scheduleTime flex mt-8 pb-5">
+                            <div className="scheduleDate pr-7 border-0 border-r border-solid border-gray-300">
+                                <p className="text-gray-500 text-2xl font-medium">wed</p>
+                                <h3 className="text-gray-600 text-4xl font-medium text-center">27</h3>
+                            </div>
+                            <div className="scheduleContent pl-7">
+                                <h2 className="text-gray-600 text-3xl font-medium">Developer Meetup</h2>
+                                <p className="normal-case text-gray-500 text-xl font-medium pt-2">Meet world popular developers</p>
+                            </div>
                         </div>
-                        <button className="w-full py-4 rounded-xl text-white text-2xl bg-blue-600 font-semibold shadow-md hover:shadow-blue-500 transition-all duration-150 capitalize">increase budget</button>
+                        <TimeAddress Icon={NewspaperIcon} text="Sat, May 25, 2020" desc="10:AM to 6:PM"/>
+                        <TimeAddress Icon={LocationMarkerIcon} text="Central Park" desc="Manhattan, New york City"/>
+                        <div className="scheduleBottom flex gap-4 items-center mt-8">
+                            <div className="scheduleImages flex">
+                                <ReactTooltip place="bottom" type="dark" effect="solid"  className="tooltip"/>
+                                <img src="images/pic1.png" alt="user Image" className="scheduleImg__style ml-0" data-tip="nil dreyar"/>
+                                <img src="images/pic2.png" alt="user Image" className="scheduleImg__style" data-tip="laxus rex"/>
+                                <img src="images/pic3.png" alt="user Image" className="scheduleImg__style" data-tip="alucard"/>
+                                <img src="images/pic4.png" alt="user Image" className="scheduleImg__style" data-tip="shoun ryu"/>
+                                <img src="images/pic2.png" alt="user Image" className="scheduleImg__style" data-tip="mark ivan"/>
+                            </div>
+                            <p className="text-2xl font-normal text-gray-600">+54</p>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div className="eCommerce__bottom grid grid-cols-3 gap-10 mb-16">
+                <div className="browserContainer bg-white overflow-hidden shadow-lg rounded-xl py-8 px-10">
+                    <div className="browserHeader flex justify-between items-center">
+                        <div className="content">
+                            <h3 className="text-gray-600 text-3xl font-medium">Browser States</h3>
+                            <p className="text-gray-500 font-medium text-lg">Counter January 2022</p>
+                        </div>
+                        <DotsVerticalIcon className="w-7 h-7 text-gray-600 cursor-pointer"/>
+                    </div>
+
+                    <div className="browserBody">
+                        <BrowserCard image="chrome.png" name="google chrome" amount="54.9%" settings={{series:radialBarChart.series1, options:{...radialBarChart.options, colors:radialBarChart.options.colors1}}}/>
+                        <BrowserCard image="mini.png" name="opera mini" amount="8.6%" settings={{series:radialBarChart.series2, options:{...radialBarChart.options, colors:radialBarChart.options.colors2}}}/>
+                        <BrowserCard image="safari.png" name="apple safari" amount="25.7%" settings={{series:radialBarChart.series3, options:{...radialBarChart.options, colors:radialBarChart.options.colors3}}}/>
+                        <BrowserCard image="explorer.png" name="internet explorer" amount="6.8%" settings={{series:radialBarChart.series4, options:{...radialBarChart.options, colors:radialBarChart.options.colors4}}}/>
+                        <BrowserCard image="firefox.png" name="mozilla firefox" amount="13.5%" settings={{series:radialBarChart.series5, options:{...radialBarChart.options, colors:radialBarChart.options.colors5}}}/>
+                    </div>
+                </div>
+
+                <div className="goalContainer bg-white overflow-hidden shadow-lg rounded-xl">
+                    <div className="goal flex justify-between items-center py-8 px-10">
+                        <h3 className="text-gray-600 text-3xl font-medium">goal overview</h3>
+                        <QuestionMarkCircleIcon className="w-7 h-7 text-gray-400"/>
+                    </div>
+                    <div className="customAngle flex justify-center items-center mb-12">
+                        <ReactApexChart options={customAngle.options} series={customAngle.series} type="radialBar" height={230} width={200}/>
+                    </div>
+                    <div className="goalNumbers flex border-0 border-t border-solid border-gray-200">
+                        <div className="completed w-1/2 py-6 border-0 border-r border-solid border-gray-200 text-center">
+                            <p className="text-gray-400 font-medium text-xl tracking-wider">Completed</p>
+                            <h2 className="text-gray-600 font-semibold text-3xl">734,484</h2>
+                        </div>
+                        <div className="progress w-1/2 py-6 text-center">
+                            <p className="text-gray-400 font-medium text-xl tracking-wider">in progress</p>
+                            <h2 className="text-gray-600 font-semibold text-3xl">135,483</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="transaction bg-white overflow-hidden shadow-lg rounded-xl py-8 px-10">
+                    <div className="transactionHeader flex justify-between items-center">
+                        <h3 className="text-gray-600 text-3xl font-medium">Transactions</h3>
+                        <DotsVerticalIcon className="w-7 h-7 text-gray-600 cursor-pointer"/>
+                    </div>
+                    <div className="transactionBody">
+                        <TransIcon Icon={ChevronDoubleDownIcon} color="text-indigo-500" bg="bg-indigo-100" amount="- $74" name="Wallet" desc="Starbucks" amountColor="text-red-500"/>
+                        <TransIcon Icon={CheckIcon} color="text-green-500" bg="bg-green-100" amount="+ $346" name="bank transfer" desc="add money" amountColor="text-green-500"/>
+                        <TransIcon Icon={CurrencyDollarIcon} color="text-red-500" bg="bg-red-100" amount="+ $762" name="paypal" desc="add money" amountColor="text-green-500"/>
+                        <TransIcon Icon={CreditCardIcon} color="text-yellow-500" bg="bg-yellow-100" amount="+ $82" name="Mastercard" desc="ordered food" amountColor="text-red-500"/>
+                        <TransIcon Icon={TrendingUpIcon} color="text-blue-500" bg="bg-blue-100" amount="+ $95" name="transfer" desc="refund" amountColor="text-green-500"/>
+                    </div>
+                </div>
+            </div>
+
+            <Footer/>
 
         </section>
     )

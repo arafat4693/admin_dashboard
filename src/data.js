@@ -81,6 +81,104 @@ const contacts = [
     }
 ]
 
+const customAngleChart = {
+  series: [86],
+  options: {
+    stroke: {
+      lineCap: "round"
+    }, 
+    fill: {
+      type: "gradient",
+      gradient: {
+        shade: "dark",
+        type: "vertical",
+        gradientToColors: ["#df3636", "#ee7a7a"],
+        stops: [0, 100]
+      }
+    },
+    chart: {
+      type: 'radialBar',
+    },
+    plotOptions: {
+      radialBar: {
+        track:{
+          background: '#ebebeb',
+          strokeWidth: '55%',
+        },
+        offsetY: 0,
+        startAngle: -155,
+        endAngle: 155,
+        hollow: {
+          margin: 10,
+          size: '75%',
+          background: 'transparent',
+          image: undefined,
+        },
+        dataLabels: {
+          name: {
+            show: false,
+          },
+          value: {
+            show:true,
+            fontSize: '34px',
+            fontFamily: 'Montserrat, sans-serif',
+            fontWeight: 500,
+            color: "#6b6b6b",
+          }
+        }
+      }
+    },
+    colors: ['#ee7a7a'],
+  },
+}
+
+const radialBarChart = {
+  series1: [54],
+  series2: [8.6],
+  series3: [25.7],
+  series4: [6.8],
+  series5: [13.5],
+
+  options: {
+    colors1: ['#e44444'],
+    colors2: ['#64e444'],
+    colors3: ['#4477e4'],
+    colors4: ['#b144e4'],
+    colors5: ['#d9e444'],
+    stroke: {
+      lineCap: "round"
+    }, 
+    grid: {
+      padding: {
+          top: -15,
+          bottom: -15
+      }
+  },
+    chart: {
+      height: 350,
+      type: 'radialBar',
+    },
+    plotOptions: {
+      radialBar: {
+        track:{
+          background: '#ebebeb',
+        },
+        hollow: {
+          size: '23%'
+        },
+        dataLabels: {
+          name: {
+            show: false,
+          },
+          value: {
+            show:false,
+          }
+        }
+      },
+    },
+  },
+}
+
 const doubleBarChart = {
   series: [{
     data: [100, 200, 300, 250, 100, 80, 170, 220, 100]
@@ -206,15 +304,29 @@ const barChart = {
     }
 
 const dashesLineChart = {
-  series: [{
-    name: "Session Duration",
-    data: [23, 20, 25, 22, 23, 19, 26, 22, 21.6, 18, 23]
+    series1: [{
+      name: "Session Duration",
+      data: [23, 20, 25, 22, 23, 19, 26, 22, 21.6, 18, 23]
+    },
+    {
+      name: "Page Views",
+      data: [17, 14, 19, 16, 17, 13, 20, 14, 14.8, 12, 17]
+    },
+  ],
+  series2: [{
+    data: [14, 16, 18, 16, 15, 18, 17, 19, 16]
   },
   {
-    name: "Page Views",
-    data: [13, 10, 15, 12, 14, 10, 15, 13, 13.8, 11, 16]
+    data: [11, 13, 15, 13, 12, 15, 14, 16, 13]
+  }
+  ],
+  series3: [{
+    data: [20, 22, 25, 23, 24, 21, 22, 20, 22]
   },
-],
+  {
+    data: [16, 18, 21, 19, 20, 17, 18, 16, 18]
+  }
+  ],
 options: {
   colors: ['#2563eb', '#d8d8d8'],
   chart: {
@@ -409,4 +521,4 @@ const pieChart = {
   
 }
 
-export {contacts, files, pages, barChart, lineChart, pieChart, doubleBarChart, dashesLineChart}
+export {contacts, files, pages, barChart, lineChart, pieChart, doubleBarChart, dashesLineChart, customAngleChart, radialBarChart}

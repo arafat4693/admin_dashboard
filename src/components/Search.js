@@ -69,6 +69,8 @@ export default function Search({setOpenSrc}) {
                 activeNode.classList.remove('bg-gray-100')
                 prevNode.classList.add('bg-gray-100')
                 break
+            default:
+                return
         }
     }
     return (
