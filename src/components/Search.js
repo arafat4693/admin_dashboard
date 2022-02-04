@@ -77,7 +77,7 @@ export default function Search({setOpenSrc}) {
         <>
             <form onSubmit={submit} className="w-full searchBar flex items-center justify-between gap-5">
                 <i className="fas fa-search text-2xl text-gray-400 cursor-pointer" onClick={searchResult}></i>
-                <input autofocus="autofocus" ref={srcRef} value={srcValue} onKeyDown={keyControl} onChange={searching} type="text" placeholder="Search here" className="normal-case py-3 w-full placeholder:text-gray-400 text-gray-500 placeholder:font-normal font-medium text-xl"/>
+                <input autoFocus="autofocus" ref={srcRef} value={srcValue} onKeyDown={keyControl} onChange={searching} type="text" placeholder="Search here" className="normal-case py-3 w-full placeholder:text-gray-400 text-gray-500 placeholder:font-normal font-medium text-xl"/>
                 <i className="fas fa-times text-3xl text-gray-400 cursor-pointer" onClick={closeSrc}></i>
             </form>
 

@@ -23,7 +23,7 @@ export default function ECommerce() {
 
             <div className="eCommerce__statistics grid grid-cols-3 gap-10 my-8">
                 <div className="congrats bg-white shadow-lg p-7 rounded-xl overflow-hidden relative">
-                    <img src="images/medal.png" alt="medal" className="absolute top-0 right-4"/>
+                    <img src="/images/medal.png" alt="medal" className="absolute top-0 right-4"/>
                     <h3 className="font-medium text-2xl text-gray-600">congratulations 🎉 sunny!</h3>
                     <p className="font-normal text-lg text-gray-500 normal-case tracking-wider mt-3">You have won the first place</p>
                     <h2 className="font-medium text-4xl text-blue-600 mt-14 mb-4 cursor-pointer">$50.6k</h2>
@@ -112,7 +112,7 @@ export default function ECommerce() {
                 </div>
                 <div className="schedule bg-white shadow-lg rounded-xl overflow-hidden">
                     <div className="scheduleImage h-72 w-full bg-indigo-100">
-                        <img src="images/office.png" alt="storyset image" className="w-full h-full object-cover"/>
+                        <img src="/images/office.png" alt="storyset image" className="w-full h-full object-cover"/>
                     </div>
                     <div className="scheduleInfo px-7">
                         <div className="scheduleTime flex mt-8 pb-5">
@@ -130,11 +130,11 @@ export default function ECommerce() {
                         <div className="scheduleBottom flex gap-4 items-center mt-8">
                             <div className="scheduleImages flex">
                                 <ReactTooltip place="bottom" type="dark" effect="solid"  className="tooltip"/>
-                                <img src="images/pic1.png" alt="user Image" className="scheduleImg__style ml-0" data-tip="nil dreyar"/>
-                                <img src="images/pic2.png" alt="user Image" className="scheduleImg__style" data-tip="laxus rex"/>
-                                <img src="images/pic3.png" alt="user Image" className="scheduleImg__style" data-tip="alucard"/>
-                                <img src="images/pic4.png" alt="user Image" className="scheduleImg__style" data-tip="shoun ryu"/>
-                                <img src="images/pic2.png" alt="user Image" className="scheduleImg__style" data-tip="mark ivan"/>
+                                <img src="/images/pic1.png" alt="user Image" className="scheduleImg__style ml-0" data-tip="nil dreyar"/>
+                                <img src="/images/pic2.png" alt="user Image" className="scheduleImg__style" data-tip="laxus rex"/>
+                                <img src="/images/pic3.png" alt="user Image" className="scheduleImg__style" data-tip="alucard"/>
+                                <img src="/images/pic4.png" alt="user Image" className="scheduleImg__style" data-tip="shoun ryu"/>
+                                <img src="/images/pic2.png" alt="user Image" className="scheduleImg__style" data-tip="mark ivan"/>
                             </div>
                             <p className="text-2xl font-normal text-gray-600">+54</p>
                         </div>

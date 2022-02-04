@@ -31,7 +31,7 @@ export default function Header() {
                             <h3 className="lowercase text-gray-500 text-2xl font-medium">johndoe</h3>
                             <p className="pl-6 lowercase font-normal text-gray-500 text-base">member</p>
                         </div>
-                        <img src="images/pic1.png" alt="user" className="w-16 h-16 border-0 object-cover rounded-full"/>
+                        <img src="/images/pic2.png" alt="user" className="w-16 h-16 border-0 object-cover rounded-full"/>
                     </div>
                 </div>
             </>

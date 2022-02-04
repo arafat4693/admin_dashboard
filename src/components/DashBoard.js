@@ -1,13 +1,19 @@
 import React from 'react'
 import ECommerce from './ECommerce'
 import Header from './Header'
+import {Routes, Route, Navigate} from "react-router-dom";
+import Users from './Users';
 
 export default function DashBoard() {
     return (
         <main className="mainDashboard h-screen w-full pl-97">
             <section className="max-w-screen-2xl mx-auto pt-6 pb-4 px-10">
                 <Header/>
-                <ECommerce/>
+                <Routes>
+                    <Route path="/dashboard/ecommerce" element={<ECommerce/>} />
+                    <Route path="/user/list" element={<Users/>} />
+                    <Route path="*" element={<Navigate to="/dashboard/ecommerce" />} />
+                </Routes>
             </section>
         </main>
     )
