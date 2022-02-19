@@ -13,6 +13,7 @@ export default function Filter({option, setting}) {
     const [hoverState, setHoverState] = useState('Select Role')
 
     useEffect(()=>{
+        // setShow(true)
         if(!filters.length){
             return
         }
@@ -57,8 +58,28 @@ export default function Filter({option, setting}) {
         const inputValue = e.target.value.toLowerCase()
         setFilters(setting.filter(option=>option.toLowerCase().includes(inputValue)))
     }
+
+    function hideOptions(e){
+        // setTimeout(()=>{
+        //     console.log('close')
+        //     openLists()
+        // }, 100)
+        console.log('close')
+        // openLists()
+        setShow(false)
+        // e.relatedTarget && selectActive({target:e.relatedTarget})
+    }
     
     function selectActive(e){
+        e.preventDefault && e.preventDefault()
+        // console.log('hi')
+        // e.buttons && console.log(e.buttons)
+        if(e.buttons && (e.buttons == 2 || e.buttons == 4)){
+            setInputValue('')
+            setShow(false)
+            inputRef.current.blur()
+            return
+        }
         const New = e.target
         const Old = listRef.current.querySelector('.filterActive__style') || null
         if(Old === New){
@@ -103,6 +124,7 @@ export default function Filter({option, setting}) {
     }
 
     function pressingKeys(e){
+        if(!filters.length) return
         const listBox = listRef.current
         switch(e.code){
             case 'ArrowDown':
@@ -143,12 +165,13 @@ export default function Filter({option, setting}) {
         <label htmlFor={option} className="text-gray-500 font-normal text-xl inline-block pb-2">{option}</label>
         <div className="relative">
             <div onClick={openLists} className="border border-solid border-gray-200 rounded-lg flex items-center px-4 py-4 gap-4 w-full">
-                <input ref={inputRef} onKeyDown={pressingKeys} value={inputValue} onChange={inputChange} type="text" placeholder={placeholderValue} className="inputBox normal-case w-full font-normal text-xl text-gray-600 placeholder:text-gray-600 cursor-default"/>
+                <input ref={inputRef} onKeyDown={pressingKeys} onBlur={hideOptions} value={inputValue} onChange={inputChange} type="text" placeholder={placeholderValue} className="inputBox normal-case w-full font-normal text-xl text-gray-600 placeholder:text-gray-600 cursor-default"/>
                 <ChevronDownIcon className="w-6 h-6 text-gray-700"/>
             </div>
-            <ul ref={listRef} className={`${show?'block':'hidden'} filterOptions absolute top-full left-0 mt-3 bg-white w-full rounded-lg border border-solid border-gray-200 overflow-hidden`}>
+            <ul ref={listRef} className={`${show?'block':'hidden'} filterOptions absolute top-full left-0 mt-3 bg-white w-full rounded-lg border border-solid border-gray-200 overflow-hidden shadow-md`}>
                 {
-                    filters.map((opt, index)=>(<li data-order={index} onClick={selectActive} onMouseEnter={mouseEnter} key={index} className={`${opt===activeState?"filterActive__style":"filterUnActive__style"} px-5 py-4 text-xl font-normal cursor-pointer`}>{opt}</li>))
+                    filters.length ? filters.map((opt, index)=>(<li onMouseDown={selectActive} data-order={index} onMouseEnter={mouseEnter} key={index} className={`${opt===activeState?"filterActive__style":"filterUnActive__style"} px-5 py-4 text-xl font-normal cursor-pointer`}>{opt}</li>))
+                    : <li className="px-5 py-4 text-xl font-normal filterUnActive__style text-center">No options</li>
                 }
             </ul>
         </div>

@@ -522,5 +522,7 @@ const pieChart = {
 }
 
 const role = ['Select Role', 'Admin', 'Author', 'Editor', 'Maintainer', 'Subscriber']
+const plan = ['Select Plan', 'Basic', 'Company', 'Enterprise', 'Team']
+const status = ['Select Status', 'Pending', 'Active', 'Inactive']
 
-export {contacts, files, pages, barChart, lineChart, pieChart, doubleBarChart, dashesLineChart, customAngleChart, radialBarChart, role}
+export {contacts, files, pages, barChart, lineChart, pieChart, doubleBarChart, dashesLineChart, customAngleChart, radialBarChart, role, plan, status}

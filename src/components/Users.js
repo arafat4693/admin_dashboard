@@ -1,8 +1,8 @@
 import React from 'react';
 import TotalUser from './TotalUser';
 import { UserIcon, UserAddIcon, UserGroupIcon, UserRemoveIcon } from '@heroicons/react/outline'
-import Filter from './Filter';
-import {role} from '../data'
+import {role, plan, status} from '../data'
+import UserFilter from './UserFilter';
 
 export default function Users() {
   return (
@@ -18,7 +18,9 @@ export default function Users() {
         <div className="filtersContainer bg-white px-8 py-6 rounded-xl shadow-lg">
           <h3 className="filterHeader font-medium text-3xl text-gray-600 pb-8">Filters</h3>
           <div className="filterBody grid grid-cols-3 gap-10">
-            <Filter option="Role" setting={role}/>
+            <UserFilter option="Role" setting={role}/>
+            <UserFilter option="Plan" setting={plan}/>
+            <UserFilter option="Status" setting={status}/>
           </div>
         </div>
     </section>
