@@ -8,8 +8,13 @@ const initialState = {
 export const admin = createSlice({
     name: "admin",
     initialState,
-    reducers:{}
+    reducers:{
+        userDelete: (state, action)=>{
+            state.usersList = state.usersList.filter(user=>(user.id!=action.payload))
+        }
+    }
 })
 
 export const users = (state)=>state.users.usersList
+export const {userDelete} = admin.actions
 export default admin.reducer 

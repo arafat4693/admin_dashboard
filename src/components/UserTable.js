@@ -18,7 +18,7 @@ export default function UserTable({showUsers,userSlice,setUserSlice, buttonActiv
             userListPerPage.push(allUsers.slice(showUsers*count, showUsers*(count+1)))
             count+=1
         })
-        remainedUser && userListPerPage.push(allUsers.slice(remainedUser))
+        remainedUser && userListPerPage.push(allUsers.slice(-remainedUser))
         setUserSlice([...userListPerPage])
     },[allUsers, showUsers])
 
@@ -43,7 +43,7 @@ export default function UserTable({showUsers,userSlice,setUserSlice, buttonActiv
                         <td className="py-4 px-11"><p className="font-medium text-xl text-gray-500">{user.plan}</p></td>
                         <td className="py-4 px-11 font-normal text-2xl text-gray-600"><p className="font-medium text-xl text-gray-500">{user.billing}</p></td>
                         <td className="py-4 px-11"><UserStatus status={user.status} color={user.statusColor} bgColor={user.statusBg}/></td>
-                        <td className="py-4 px-11"><ActionMenu/></td>
+                        <td className="py-4 px-11"><ActionMenu userId={user.id}/></td>
                     </tr>
                 ))
             }

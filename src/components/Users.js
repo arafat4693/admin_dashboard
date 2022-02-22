@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import TotalUser from './TotalUser';
 import { UserIcon, UserAddIcon, UserGroupIcon, UserRemoveIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline'
 import {role, plan, status} from '../data'
@@ -8,13 +8,17 @@ import {useSelector, useDispatch} from 'react-redux'
 
 export default function Users() {
   const [showUsers, setShowUsers] = useState(10)
-  const [userSlice, setUserSlice] = useState([])
+  const [userSlice, setUserSlice] = useState([[]])
   const [buttonActive, setButtonActive] = useState("1")
 
   function numberOfUser(e){
     setShowUsers(+e.target.value)
     setButtonActive("1")
   }
+
+    useEffect(()=>{
+        !userSlice[+buttonActive-1] && setButtonActive((userSlice.length).toString())
+    },[userSlice])
 
   return (
     <section className="users">
@@ -58,7 +62,7 @@ export default function Users() {
 
           </div>
 
-          <UserTable showUsers={showUsers} userSlice={userSlice} setUserSlice={setUserSlice} buttonActive={buttonActive}/>
+          <UserTable showUsers={showUsers} userSlice={userSlice} setUserSlice={setUserSlice} buttonActive={buttonActive} setButtonActive={setButtonActive}/>
 
           <div className="userNav_container flex justify-end py-7 px-4">
             <div className="userNavigation flex items-center bg-gray-100 rounded-full">
