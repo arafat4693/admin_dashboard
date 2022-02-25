@@ -2,7 +2,7 @@ import {createSlice} from '@reduxjs/toolkit'
 import {allUsers} from './data'
 
 const initialState = {
-    usersList: [...allUsers]
+    usersList: [...allUsers],
 }
 
 export const admin = createSlice({

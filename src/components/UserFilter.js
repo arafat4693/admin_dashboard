@@ -1,7 +1,7 @@
 import React,{useState, useEffect, useRef} from 'react'
 import { ChevronDownIcon } from '@heroicons/react/outline'
 
-export default function UserFilter({option, setting}) {
+export default function UserFilter({option, setting, setPowerState}) {
   const [filters, setFilters] = useState([...setting])
   const [border, setBorder] = useState(false)
   const [show, setShow] = useState(false)
@@ -72,6 +72,7 @@ export default function UserFilter({option, setting}) {
     setActiveState(New.innerText)
     setPlaceholderState(New.innerText)
     setHoverState(setting[0])
+    setPowerState(state=>({...state, [option]:New.innerText}))
   }
 
   function mouseEnter(e){
