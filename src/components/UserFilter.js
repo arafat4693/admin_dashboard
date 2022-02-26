@@ -23,7 +23,11 @@ export default function UserFilter({option, setting, setPowerState}) {
     }
   },[filters])
 
-  function openLists(){
+  function openLists(e){
+    e.preventDefault()
+    if(e.buttons == 2 || e.buttons == 4){
+      return
+    }
     inputRef.current.focus()
     if(show){//close
         closeBox()
@@ -107,7 +111,7 @@ export default function UserFilter({option, setting, setPowerState}) {
     <div className="userFilter">
         <label htmlFor={option} className="text-gray-500 font-normal text-xl inline-block pb-2">{option}</label>
         <div className="relative">
-            <div onClick={openLists}className={`border border-solid ${border?'border-blue-400':'border-gray-200'} rounded-lg flex items-center px-4 py-4 gap-4 w-full`}>
+            <div onMouseDown={openLists}className={`border border-solid ${border?'border-blue-400':'border-gray-200'} rounded-lg flex items-center px-4 py-4 gap-4 w-full`}>
                 <input value={inputValue} ref={inputRef} placeholder={placeholderState} className="inputBox normal-case w-full font-normal text-xl text-gray-600 placeholder:text-gray-600 cursor-default" onFocus={()=>setBorder(true)} onChange={filterSearch} onBlur={hideOptions} onKeyDown={pressingKeys}/>
                 <ChevronDownIcon className="w-6 h-6 text-gray-700"/>
             </div>

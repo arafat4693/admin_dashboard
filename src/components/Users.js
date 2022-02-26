@@ -30,17 +30,28 @@ export default function Users() {
     setInputState(inputValue)
     const value = inputValue.toLowerCase()
     setFilteredUsers(allUsers.filter(user=>((user.name.toLowerCase().includes(value) || user.mail.toLowerCase().includes(value)) && user.role.includes(powerState.Role) && user.plan.includes(powerState.Plan) && user.status.includes(powerState.Status))))
-    // allUsers.forEach(user=>console.log(user.role.includes(powerState.Role)))
   }
 
   useEffect(()=>{
     const value = inputState.toLowerCase()
     setFilteredUsers(allUsers.filter(user=>((user.name.toLowerCase().includes(value) || user.mail.toLowerCase().includes(value)) && user.role.includes(powerState.Role) && user.plan.includes(powerState.Plan) && user.status.includes(powerState.Status))))
-  },[powerState])
+  },[powerState, allUsers])
 
     useEffect(()=>{
         !userSlice[+buttonActive-1] && setButtonActive((userSlice.length))
     },[userSlice])
+
+    function moveRight(){
+      setButtonActive(state=>(
+        state===userSlice.length?userSlice.length:state+1
+      ))
+    }
+
+    function moveLeft(){
+      setButtonActive(state=>(
+        state===1?1:state-1
+      ))
+    }
 
   return (
     <section className="users">
@@ -86,19 +97,19 @@ export default function Users() {
 
           <UserTable showUsers={showUsers} userSlice={userSlice} setUserSlice={setUserSlice} buttonActive={buttonActive} allUsers={filteredUsers}/>
 
-          <div className="userNav_container flex justify-end py-7 px-4">
-            <div className="userNavigation flex items-center bg-gray-100 rounded-full">
-              <ChevronLeftIcon className="w-5 h-5 ml-3 mr-5 text-gray-500 cursor-pointer"/>
-              {
-                userSlice.map((slice, index)=>(
-                <button key={index} onClick={e=>setButtonActive(+e.target.innerText)} className={`w-12 h-12 rounded-full ${index+1===buttonActive?'bg-blue-500 text-white':'text-gray-500'} font-medium text-xl`}>
-                  {index+1}
-                </button>
-                ))
-              }
-              <ChevronRightIcon className="w-5 h-5 p ml-5 mr-3 text-gray-500 cursor-pointer"/>
+            {filteredUsers.length != 0 &&
+            <div className="userNav_container flex justify-end py-7 px-4">
+              <div className="userNavigation flex items-center bg-gray-100 rounded-full select-none">
+                <ChevronLeftIcon className={`w-5 h-5 ml-3 mr-5 ${buttonActive===1?'text-gray-400 cursor-default':'text-gray-600 cursor-pointer'}`} onClick={moveLeft}/>
+                  {userSlice.map((slice, index)=>(
+                  <button key={index} onClick={e=>setButtonActive(+e.target.innerText)} className={`w-12 h-12 rounded-full ${index+1===buttonActive?'bg-blue-500 text-white':'text-gray-500'} font-medium text-xl`}>
+                    {index+1}
+                  </button>
+                  ))}
+                <ChevronRightIcon className={`w-5 h-5 p ml-5 mr-3 ${buttonActive===userSlice.length?'text-gray-400 cursor-default':'text-gray-600 cursor-pointer'}`} onClick={moveRight}/>
+              </div>
             </div>
-          </div>
+            }
         </div>
     </section>
   )
