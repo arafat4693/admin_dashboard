@@ -3,11 +3,9 @@ import UserAvatar from './UserAvatar'
 import UserRole from './UserRole'
 import UserStatus from './UserStatus'
 import ActionMenu from './ActionMenu'
-import {useSelector} from 'react-redux'
-import {users} from '../slice'
+import { ChevronUpIcon } from '@heroicons/react/outline'
 
 export default function UserTable({showUsers,userSlice,setUserSlice, buttonActive, allUsers}) {
-    // const allUsers = useSelector(users)
 
     useEffect(()=>{
         const fullPage = Math.floor(allUsers.length/showUsers)
@@ -29,7 +27,7 @@ export default function UserTable({showUsers,userSlice,setUserSlice, buttonActiv
             <table className="w-full">
                 <thead className="bg-gray-100">
                     <tr className="text-left">
-                        <th className="th__style w-1/4">USER</th>
+                        <th className="th__style w-1/4 cursor-pointer group">USER <ChevronUpIcon className="w-6 h-6 text-gray-600 inline-block ml-2 opacity-0 group-hover:opacity-50 transition duration-150 ease-in"/></th>
                         <th className="th__style w-1/6">ROLE</th>
                         <th className="th__style w-1/6">PLAN</th>
                         <th className="th__style w-1/6">BILLING</th>

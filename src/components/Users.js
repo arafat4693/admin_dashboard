@@ -38,7 +38,7 @@ export default function Users() {
   },[powerState, allUsers])
 
     useEffect(()=>{
-        !userSlice[+buttonActive-1] && setButtonActive((userSlice.length))
+        !userSlice[+buttonActive-1] && setButtonActive((userSlice.length===0?1:userSlice.length))
     },[userSlice])
 
     function moveRight(){
