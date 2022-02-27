@@ -25,21 +25,14 @@ export default function Users() {
     setButtonActive(1)
   }
 
-  function filterUsers(e){
-    const inputValue = e.target.value
-    setInputState(inputValue)
-    const value = inputValue.toLowerCase()
-    setFilteredUsers(allUsers.filter(user=>((user.user.toLowerCase().includes(value) || user.mail.toLowerCase().includes(value)) && user.role.includes(powerState.Role) && user.plan.includes(powerState.Plan) && user.status.includes(powerState.Status))))
-  }
-
   useEffect(()=>{
     const value = inputState.toLowerCase()
-    setFilteredUsers(allUsers.filter(user=>((user.user.toLowerCase().includes(value) || user.mail.toLowerCase().includes(value)) && user.role.includes(powerState.Role) && user.plan.includes(powerState.Plan) && user.status.includes(powerState.Status))))
-  },[powerState, allUsers])
+    setFilteredUsers(allUsers.filter(user=>((user.user[0].toLowerCase().includes(value) || user.mail.toLowerCase().includes(value)) && user.role.includes(powerState.Role) && user.plan.includes(powerState.Plan) && user.status.includes(powerState.Status))))
+  },[powerState, allUsers, inputState])
 
     useEffect(()=>{
         !userSlice[+buttonActive-1] && setButtonActive((userSlice.length===0?1:userSlice.length))
-    },[userSlice])
+    },[userSlice, buttonActive])
 
     function moveRight(){
       setButtonActive(state=>(
@@ -88,7 +81,7 @@ export default function Users() {
             <div className="addUser flex gap-5 items-center">
               <div className="inputBox">
                 <label htmlFor="input" className="label__style mr-3">search:</label>
-                <input type="search" id="input" className="input__style normal-case" onChange={filterUsers}  value={inputState}/>
+                <input type="search" id="input" className="input__style normal-case" onChange={e=>setInputState(e.target.value)}  value={inputState}/>
               </div>
               <button className="rounded-lg text-2xl px-8 py-3 bg-blue-600 text-white capitalize hover:shadow-lg hover:shadow-blue-400">add new user</button>
             </div>
@@ -97,7 +90,7 @@ export default function Users() {
 
           <UserTable showUsers={showUsers} userSlice={userSlice} setUserSlice={setUserSlice} buttonActive={buttonActive} allUsers={filteredUsers}/>
 
-            {filteredUsers.length != 0 &&
+            {filteredUsers.length !== 0 &&
             <div className="userNav_container flex justify-end py-7 px-4">
               <div className="userNavigation flex items-center bg-gray-100 rounded-full select-none">
                 <ChevronLeftIcon className={`w-5 h-5 ml-3 mr-5 ${buttonActive===1?'text-gray-400 cursor-default':'text-gray-600 cursor-pointer'}`} onClick={moveLeft}/>

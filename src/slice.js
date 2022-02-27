@@ -10,13 +10,13 @@ export const admin = createSlice({
     initialState,
     reducers:{
         userDelete: (state, action)=>{
-            state.usersList = state.usersList.filter(user=>(user.id!=action.payload))
+            state.usersList = state.usersList.filter(user=>(user.id!==action.payload))
         },
         ascSort: (state, action)=>{
-            state.usersList = state.usersList.sort((a, b) => { return (a[action.payload] > b[action.payload] ? 1 : (a[action.payload] === b[action.payload] ? 0 : -1)) })
+            state.usersList = state.usersList.sort((a, b) => { return (a[action.payload][0] > b[action.payload][0] ? 1 : (a[action.payload][0] === b[action.payload][0] ? 0 : -1)) })
         },
         dscSort: (state, action)=>{
-            state.usersList = state.usersList.sort((a, b) => { return (a[action.payload] > b[action.payload] ? -1 : (a[action.payload] === b[action.payload] ? 0 : 1)) })
+            state.usersList = state.usersList.sort((a, b) => { return (a[action.payload][0] > b[action.payload][0] ? -1 : (a[action.payload][0] === b[action.payload][0] ? 0 : 1)) })
         }
     }
 })
