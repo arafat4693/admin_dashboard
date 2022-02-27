@@ -4,7 +4,7 @@ import { UserIcon, UserAddIcon, UserGroupIcon, UserRemoveIcon, ChevronLeftIcon, 
 import {role, plan, status} from '../data'
 import UserFilter from './UserFilter';
 import UserTable from './UserTable';
-import {useSelector, useDispatch} from 'react-redux'
+import {useSelector} from 'react-redux'
 import {users} from '../slice'
 
 export default function Users() {
@@ -29,12 +29,12 @@ export default function Users() {
     const inputValue = e.target.value
     setInputState(inputValue)
     const value = inputValue.toLowerCase()
-    setFilteredUsers(allUsers.filter(user=>((user.name.toLowerCase().includes(value) || user.mail.toLowerCase().includes(value)) && user.role.includes(powerState.Role) && user.plan.includes(powerState.Plan) && user.status.includes(powerState.Status))))
+    setFilteredUsers(allUsers.filter(user=>((user.user.toLowerCase().includes(value) || user.mail.toLowerCase().includes(value)) && user.role.includes(powerState.Role) && user.plan.includes(powerState.Plan) && user.status.includes(powerState.Status))))
   }
 
   useEffect(()=>{
     const value = inputState.toLowerCase()
-    setFilteredUsers(allUsers.filter(user=>((user.name.toLowerCase().includes(value) || user.mail.toLowerCase().includes(value)) && user.role.includes(powerState.Role) && user.plan.includes(powerState.Plan) && user.status.includes(powerState.Status))))
+    setFilteredUsers(allUsers.filter(user=>((user.user.toLowerCase().includes(value) || user.mail.toLowerCase().includes(value)) && user.role.includes(powerState.Role) && user.plan.includes(powerState.Plan) && user.status.includes(powerState.Status))))
   },[powerState, allUsers])
 
     useEffect(()=>{

@@ -1,11 +1,26 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import UserAvatar from './UserAvatar'
 import UserRole from './UserRole'
 import UserStatus from './UserStatus'
 import ActionMenu from './ActionMenu'
 import { ChevronUpIcon } from '@heroicons/react/outline'
+import {useDispatch} from 'react-redux'
+import {ascSort, dscSort} from '../slice'
+
+const columnStatus = {
+    user: false,
+    role: false,
+    plan: false,
+    billing: false,
+    status: false
+}
 
 export default function UserTable({showUsers,userSlice,setUserSlice, buttonActive, allUsers}) {
+    const [userState, setUserState] = useState({
+        status: {...columnStatus},
+        rotate: {...columnStatus}
+    })
+    const dispatch = useDispatch()
 
     useEffect(()=>{
         const fullPage = Math.floor(allUsers.length/showUsers)
@@ -20,6 +35,30 @@ export default function UserTable({showUsers,userSlice,setUserSlice, buttonActiv
         setUserSlice([...userListPerPage])
     },[allUsers, showUsers])
 
+    function sortUsers(columnName){
+        const name = columnName.trim().toLowerCase()
+        if(userState.status[name]){
+            setUserState(state=>({...state, rotate:{...state.rotate, [name]:!state.rotate[name]}}))
+            if(userState.rotate[name]){
+                dispatch(ascSort(name))
+            }else{
+                dispatch(dscSort(name))
+            }
+        }else{
+            setUserState(state=>({...state, status:{...state.status, [name]:!state.status[name]}}))
+            if(userState.rotate[name]){
+                dispatch(dscSort(name))
+            }else{
+                dispatch(ascSort(name))
+            }
+        }
+    }
+
+    function loseFocus(columnName){
+        const name = columnName.trim().toLowerCase()
+        setUserState(state=>({...state, status:{...state.status, [name]:false}}))
+    }
+
     return (
         <>
         {
@@ -27,11 +66,26 @@ export default function UserTable({showUsers,userSlice,setUserSlice, buttonActiv
             <table className="w-full">
                 <thead className="bg-gray-100">
                     <tr className="text-left">
-                        <th className="th__style w-1/4 cursor-pointer group">USER <ChevronUpIcon className="w-6 h-6 text-gray-600 inline-block ml-2 opacity-0 group-hover:opacity-50 transition duration-150 ease-in"/></th>
-                        <th className="th__style w-1/6">ROLE</th>
-                        <th className="th__style w-1/6">PLAN</th>
-                        <th className="th__style w-1/6">BILLING</th>
-                        <th className="th__style">STATUS</th>
+                        <th onBlur={e=>loseFocus(e.target.innerText)} onClick={e=>sortUsers(e.target.innerText)} tabIndex={0} className="th__style w-1/4 cursor-pointer group">
+                            USER 
+                            <ChevronUpIcon className={`sortIcon__style ${!userState.status.user&&'opacity-0 group-hover:opacity-50'} ${userState.rotate.user?'rotate-180':'rotate-0'}`}/>
+                        </th>
+                        <th onBlur={e=>loseFocus(e.target.innerText)} onClick={e=>sortUsers(e.target.innerText)} tabIndex={0} className="th__style w-1/6 cursor-pointer group">
+                            ROLE
+                            <ChevronUpIcon className={`sortIcon__style ${!userState.status.role&&'opacity-0 group-hover:opacity-50'} ${userState.rotate.role?'rotate-180':'rotate-0'}`}/>
+                        </th>
+                        <th onBlur={e=>loseFocus(e.target.innerText)} onClick={e=>sortUsers(e.target.innerText)} tabIndex={0} className="th__style w-1/6 cursor-pointer group">
+                            PLAN
+                            <ChevronUpIcon className={`sortIcon__style ${!userState.status.plan&&'opacity-0 group-hover:opacity-50'} ${userState.rotate.plan?'rotate-180':'rotate-0'}`}/>
+                        </th>
+                        <th onBlur={e=>loseFocus(e.target.innerText)} onClick={e=>sortUsers(e.target.innerText)} tabIndex={0} className="th__style w-1/6 cursor-pointer group">
+                            BILLING
+                            <ChevronUpIcon className={`sortIcon__style ${!userState.status.billing&&'opacity-0 group-hover:opacity-50'} ${userState.rotate.billing?'rotate-180':'rotate-0'}`}/>
+                        </th>
+                        <th onBlur={e=>loseFocus(e.target.innerText)} onClick={e=>sortUsers(e.target.innerText)} tabIndex={0} className="th__style cursor-pointer group">
+                            STATUS
+                            <ChevronUpIcon className={`sortIcon__style ${!userState.status.status&&'opacity-0 group-hover:opacity-50'} ${userState.rotate.status?'rotate-180':'rotate-0'}`}/>
+                        </th>
                         <th className="th__style">ACTION</th>
                     </tr>
                     </thead>
@@ -39,7 +93,7 @@ export default function UserTable({showUsers,userSlice,setUserSlice, buttonActiv
                     {
                         userSlice[buttonActive-1]?.map((user, index)=>(
                             <tr key={user.id} className={`${(index !== userSlice[+buttonActive-1].length-1) && 'border-0 border-b border-gray-300 border-solid'}`}>
-                                <td className="py-4 px-11"><UserAvatar avatarImg={user.avatarImg} name={user.name} mail={user.mail} color={user.avatarColor} bgColor={user.avatarBg}/></td>
+                                <td className="py-4 px-11"><UserAvatar avatarImg={user.avatarImg} name={user.user} mail={user.mail} color={user.avatarColor} bgColor={user.avatarBg}/></td>
                                 <td className="py-4 px-11"><UserRole Icon={user.roleIcon} role={user.role[0]} color={user.roleIconColor}/></td>
                                 <td className="py-4 px-11"><p className="font-medium text-xl text-gray-500">{user.plan[0]}</p></td>
                                 <td className="py-4 px-11 font-normal text-2xl text-gray-600"><p className="font-medium text-xl text-gray-500">{user.billing}</p></td>

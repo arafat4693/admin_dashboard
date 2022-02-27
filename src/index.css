@@ -33,6 +33,9 @@
   .button__style {
     @apply w-full flex items-center text-gray-600 gap-2 pl-6 py-4 text-xl;
   }
+  .sortIcon__style {
+    @apply w-6 h-6 text-gray-600 inline-block ml-2 transition duration-150 ease-in;
+  }
 }
 
 .g {
