@@ -523,7 +523,9 @@ const pieChart = {
 }
 
 const role = ['Select Role', 'Admin', 'Author', 'Editor', 'Maintainer', 'Subscriber']
+const userRole = ['Subscriber', 'Admin', 'Author', 'Editor', 'Maintainer']
 const plan = ['Select Plan', 'Basic', 'Company', 'Enterprise', 'Team']
+const userPlan = ['Basic', 'Company', 'Enterprise', 'Team']
 const status = ['Select Status', 'Pending', 'Active', 'Inactive']
 
 const allUsers = [
@@ -1329,4 +1331,4 @@ const allUsers = [
   },
 ]
 
-export {contacts, files, pages, barChart, lineChart, pieChart, doubleBarChart, dashesLineChart, customAngleChart, radialBarChart, role, plan, status, allUsers}
+export {contacts, files, pages, barChart, lineChart, pieChart, doubleBarChart, dashesLineChart, customAngleChart, radialBarChart, role, plan, status, allUsers, userRole, userPlan}

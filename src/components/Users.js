@@ -83,7 +83,7 @@ export default function Users() {
                 <label htmlFor="input" className="label__style mr-3">search:</label>
                 <input type="search" id="input" className="input__style normal-case" onChange={e=>setInputState(e.target.value)}  value={inputState}/>
               </div>
-              <button className="rounded-lg text-2xl px-8 py-3 bg-blue-600 text-white capitalize hover:shadow-lg hover:shadow-blue-400">add new user</button>
+              <button className="rounded-lg text-2xl px-8 py-4 bg-blue-600 text-white capitalize hover:shadow-lg hover:shadow-blue-400">add new user</button>
             </div>
 
           </div>

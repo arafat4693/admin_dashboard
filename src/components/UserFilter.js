@@ -115,7 +115,7 @@ export default function UserFilter({option, setting, setPowerState}) {
                 <input value={inputValue} ref={inputRef} placeholder={placeholderState} className="inputBox normal-case w-full font-normal text-xl text-gray-600 placeholder:text-gray-600 cursor-default" onFocus={()=>setBorder(true)} onChange={filterSearch} onBlur={hideOptions} onKeyDown={pressingKeys}/>
                 <ChevronDownIcon className="w-6 h-6 text-gray-700"/>
             </div>
-            <ul ref={listRef} className={`${show?'block':'hidden'} filterOptions absolute top-full left-0 mt-3 bg-white w-full rounded-lg border border-solid border-gray-200 overflow-hidden shadow-md`}>
+            <ul ref={listRef} className={`${show?'block':'hidden'} filterOptions absolute top-full left-0 mt-3 bg-white w-full rounded-lg border border-solid border-gray-200 overflow-hidden shadow-md z-10`}>
                 {
                     filters.length ? filters.map((opt, index)=>(<li data-order={index} onMouseDown={selectActive} onMouseEnter={mouseEnter} key={index} className={`${opt===activeState?"filterActive__style":"filterUnActive__style"} ${(opt===hoverState && opt !==activeState) && "filterHover__style"} px-5 py-4 text-xl font-normal cursor-pointer`}>{opt}</li>))
                     : <li className="px-5 py-4 text-xl font-normal filterUnActive__style text-center">No options</li>
