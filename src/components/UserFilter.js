@@ -25,7 +25,7 @@ export default function UserFilter({option, setting, setPowerState}) {
 
   function openLists(e){
     e.preventDefault()
-    if(e.buttons == 2 || e.buttons == 4){
+    if(e.buttons === 2 || e.buttons === 4){
       return
     }
     inputRef.current.focus()
@@ -67,7 +67,7 @@ export default function UserFilter({option, setting, setPowerState}) {
 
   function selectActive(e){
     e.preventDefault && e.preventDefault()
-    if(e.buttons && (e.buttons == 2 || e.buttons == 4)){
+    if(e.buttons && (e.buttons === 2 || e.buttons === 4)){
         reset()
         return
     }
