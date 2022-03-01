@@ -4,8 +4,9 @@ import { UserIcon, UserAddIcon, UserGroupIcon, UserRemoveIcon, ChevronLeftIcon, 
 import {role, plan, status} from '../data'
 import UserFilter from './UserFilter';
 import UserTable from './UserTable';
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
 import {users} from '../slice'
+import {openBox} from '../slice'
 
 export default function Users() {
   const allUsers = useSelector(users)
@@ -19,6 +20,7 @@ export default function Users() {
     Status: 'Select Status'
   })
   const [inputState, setInputState] = useState('')
+  const dispatch = useDispatch()
 
   function numberOfUser(e){
     setShowUsers(+e.target.value)
@@ -44,6 +46,10 @@ export default function Users() {
       setButtonActive(state=>(
         state===1?1:state-1
       ))
+    }
+
+    function newUser(){
+      dispatch(openBox({visibleClass:true, typeAction:'Submit', userData:null}))
     }
 
   return (
@@ -83,7 +89,7 @@ export default function Users() {
                 <label htmlFor="input" className="label__style mr-3">search:</label>
                 <input type="search" id="input" className="input__style normal-case" onChange={e=>setInputState(e.target.value)}  value={inputState}/>
               </div>
-              <button className="rounded-lg text-2xl px-8 py-4 bg-blue-600 text-white capitalize hover:shadow-lg hover:shadow-blue-400">add new user</button>
+              <button onClick={newUser} className="rounded-lg text-2xl px-8 py-4 bg-blue-600 text-white capitalize hover:shadow-lg hover:shadow-blue-400">add new user</button>
             </div>
 
           </div>

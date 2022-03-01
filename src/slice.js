@@ -3,6 +3,17 @@ import {allUsers} from './data'
 
 const initialState = {
     usersList: [...allUsers],
+    lbVisible : {
+        visible:false, 
+        actionType:'Submit', 
+        data:{
+            fullName:'',
+            userName:'',
+            email:'',
+            contact:'',
+            company:''
+        }
+    }
 }
 
 export const admin = createSlice({
@@ -17,10 +28,18 @@ export const admin = createSlice({
         },
         dscSort: (state, action)=>{
             state.usersList = state.usersList.sort((a, b) => { return (a[action.payload][0] > b[action.payload][0] ? -1 : (a[action.payload][0] === b[action.payload][0] ? 0 : 1)) })
+        },
+        openBox: (state, action)=>{
+            state.lbVisible.visible = action.payload.visibleClass
+            state.lbVisible.actionType = action.payload.typeAction
+            if(action.payload.userData){
+                state.lbVisible.data = {...action.payload.userData}
+            }
         }
     }
 })
 
 export const users = (state)=>state.users.usersList
-export const {userDelete, ascSort, dscSort} = admin.actions
+export const lb = (state) => state.users.lbVisible
+export const {userDelete, ascSort, dscSort, openBox} = admin.actions
 export default admin.reducer 
