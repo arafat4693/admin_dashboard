@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { motion, AnimatePresence  } from "framer-motion"
 import {useSelector, useDispatch} from 'react-redux'
 import {lb, openBox} from '../slice'
-import {randomColors, pickColor} from '../data'
+import {randomColors, pickColor, randomRole} from '../data'
 
 export default function LightBox() {
     const [userInfo, setUserInfo] = useState({
@@ -20,30 +20,33 @@ export default function LightBox() {
 
     function cancelForm(){
         dispatch(openBox({visibleClass:false, typeAction:'Submit', userData:null}))
+        reset()
     }
 
     function submitForm(data){
-        console.log(data)
+        // console.log(data)
         const fullName = data.fullName.split(' ')
         const avatarStyle = pickColor(randomColors)
-        newUser = {
-            id:1,
+        const roleInfo = randomRole[userInfo['User Role']]
+        const newUser = {
+            id: Date.now(),
             avatarImg: fullName.length===1?fullName.slice(0,2):`${fullName[0][0]}${fullName[1][0]}`,
             avatarColor: avatarStyle[0],
             avatarBg: avatarStyle[1],
-            user: [...fullName],
-            mail: "bkrabbe1d@home.pl",
-            plan: ["Company", "Select Plan"],
+            user: [fullName.join(' ')],
+            mail: data.email,
+            plan: [userInfo['User Plan'], "Select Plan"],
             billing: "Auto Debit",
             status: ["Active", "Select Status"],
             statusBg: "bg-green-100",
             statusColor: "text-green-500",
-            role: ["Editor", "Select Role"],
-            roleIcon: PencilIcon,
-            roleIconColor: "text-sky-500"
+            role: [userInfo['User Role'], "Select Role"],
+            roleIcon: roleInfo[0],
+            roleIconColor: roleInfo[1]
         }
+        // console.log(newUser)
+        reset()
         dispatch(openBox({visibleClass:false, typeAction:'Submit', userData:newUser}))
-
     }
 
     function hideLb(e){

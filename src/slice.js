@@ -5,14 +5,7 @@ const initialState = {
     usersList: [...allUsers],
     lbVisible : {
         visible:false, 
-        actionType:'Submit', 
-        data:{
-            fullName:'',
-            userName:'',
-            email:'',
-            contact:'',
-            company:''
-        }
+        actionType:'Submit'
     }
 }
 
@@ -32,8 +25,8 @@ export const admin = createSlice({
         openBox: (state, action)=>{
             state.lbVisible.visible = action.payload.visibleClass
             state.lbVisible.actionType = action.payload.typeAction
-            if(action.payload.userData){
-                state.lbVisible.data = {...action.payload.userData}
+            if(action.payload.userData && action.payload.typeAction==='Submit'){
+                state.usersList = [action.payload.userData, ...state.usersList]
             }
         }
     }
