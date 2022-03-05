@@ -49,7 +49,7 @@ export default function Users() {
     }
 
     function newUser(){
-      dispatch(openBox({visibleClass:true, typeAction:'Submit', userData:null}))
+      dispatch(openBox({visibleClass:true, typeAction:'Submit'}))
     }
 
   return (
