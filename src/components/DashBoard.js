@@ -3,6 +3,7 @@ import ECommerce from './ECommerce'
 import Header from './Header'
 import {Routes, Route, Navigate} from "react-router-dom";
 import Users from './Users';
+import UserDetail from './UserDetail';
 
 export default function DashBoard() {
     return (
@@ -12,6 +13,7 @@ export default function DashBoard() {
                 <Routes>
                     <Route path="/dashboard/ecommerce" element={<ECommerce/>} />
                     <Route path="/user/list" element={<Users/>} />
+                    <Route path="/user/view" element={<UserDetail/>} />
                     <Route path="*" element={<Navigate to="/dashboard/ecommerce" />} />
                 </Routes>
             </section>

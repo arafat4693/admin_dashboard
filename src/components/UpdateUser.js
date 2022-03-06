@@ -16,7 +16,7 @@ export default function UpdateUser({cancelForm, dispatch, Lb}) {
     useEffect(()=>{
         setValue("fullName", Lb.edit.fullName)
         setValue("email", Lb.edit.email)
-    },[Lb.edit.fullName, Lb.edit.email])
+    },[Lb.edit.fullName, Lb.edit.email, setValue])
 
     function updateUser(data){
         const userData = {email: data.email, fullName: data.fullName, role: userInfo['User Role'], plan: userInfo['User Plan']}

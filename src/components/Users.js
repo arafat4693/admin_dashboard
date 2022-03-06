@@ -7,6 +7,7 @@ import UserTable from './UserTable';
 import {useSelector, useDispatch} from 'react-redux'
 import {users} from '../slice'
 import {openBox} from '../slice'
+import Footer from './Footer';
 
 export default function Users() {
   const allUsers = useSelector(users)
@@ -71,7 +72,7 @@ export default function Users() {
           </div>
         </div>
 
-        <div className="usersContainer bg-white rounded-xl shadow-lg">
+        <div className="usersContainer bg-white rounded-xl shadow-lg mb-16">
           <div className="usersContainer_header px-7 py-6 flex items-center justify-between">
 
             <div className="userEntries">
@@ -110,6 +111,8 @@ export default function Users() {
             </div>
             }
         </div>
+
+        <Footer/>
     </section>
   )
 }

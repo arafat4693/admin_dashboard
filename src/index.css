@@ -39,6 +39,9 @@
   .error__style {
     @apply text-red-500 inline-block pt-2 text-lg;
   }
+  .detailsP__style {
+    @apply text-gray-500 font-normal text-xl mb-2.5 normal-case;
+  }
 }
 
 .lightBox_bg {

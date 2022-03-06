@@ -11,7 +11,8 @@ const initialState = {
             fullName: '',
             email: ''
         }
-    }
+    },
+    details: {...allUsers[0]}
 }
 
 export const admin = createSlice({
@@ -53,5 +54,6 @@ export const admin = createSlice({
 
 export const users = (state)=>state.users.usersList
 export const lb = (state) => state.users.lbVisible
+export const detail = (state) => state.users.details
 export const {userDelete, ascSort, dscSort, openBox} = admin.actions
 export default admin.reducer 
