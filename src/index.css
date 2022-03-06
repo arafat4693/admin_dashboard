@@ -42,6 +42,9 @@
   .detailsP__style {
     @apply text-gray-500 font-normal text-xl mb-2.5 normal-case;
   }
+  .secButton__style {
+    @apply rounded-lg text-2xl bg-blue-600 font-medium text-white normal-case hover:shadow-md hover:shadow-blue-400 cursor-pointer;
+  }
 }
 
 .lightBox_bg {
