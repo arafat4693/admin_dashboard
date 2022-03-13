@@ -1,4 +1,4 @@
-import { PencilIcon, UserIcon, CogIcon, DatabaseIcon, AcademicCapIcon } from '@heroicons/react/outline'
+import { PencilIcon, UserIcon, CogIcon, DatabaseIcon, AcademicCapIcon, UserCircleIcon, BellIcon, LinkIcon, LockClosedIcon, BookmarkIcon } from '@heroicons/react/outline'
 const pages = [
     {
         id: 1,
@@ -1345,4 +1345,27 @@ function pickColor(items){
   return items[Math.floor(Math.random()*items.length)]
 }
 
-export {contacts, files, pages, barChart, lineChart, pieChart, doubleBarChart, dashesLineChart, customAngleChart, radialBarChart, role, plan, status, allUsers, userRole, userPlan, pickColor, randomColors, randomRole}
+const detailsNav = [
+  {
+    navName: "Account",
+    Icon: UserCircleIcon
+  },
+  {
+    navName: "Notifications",
+    Icon: BellIcon
+  },
+  {
+    navName: "Connections",
+    Icon: LinkIcon
+  },
+  {
+    navName: "Security",
+    Icon: LockClosedIcon
+  },
+  {
+    navName: "Billing & Plans",
+    Icon: BookmarkIcon
+  }
+]
+
+export {contacts, files, pages, barChart, lineChart, pieChart, doubleBarChart, dashesLineChart, customAngleChart, radialBarChart, role, plan, status, allUsers, userRole, userPlan, pickColor, randomColors, randomRole, detailsNav}

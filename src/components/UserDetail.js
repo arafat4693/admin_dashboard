@@ -1,10 +1,11 @@
-import React,{useMemo} from 'react'
+import React,{useMemo, useCallback} from 'react'
 import {detail} from '../slice'
 import {useSelector} from 'react-redux'
 import { CheckIcon, BriefcaseIcon } from '@heroicons/react/outline'
 import Completed from './Completed'
 import UserStatus from './UserStatus'
 import Bar from './Bar'
+import DetailsInfo from './DetailsInfo'
 
 export default function UserDetail() {
     const {avatarColor, avatarBg, avatarImg, user, status, statusBg, statusColor, role, roleIconColor, mail} = useSelector(detail)
@@ -74,7 +75,7 @@ export default function UserDetail() {
 
         </div>
 
-        <div className="info col-span-2">dsafsd</div>
+        <DetailsInfo/>
     </section>
     )
 }

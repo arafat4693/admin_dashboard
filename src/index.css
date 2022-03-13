@@ -12,6 +12,9 @@
   .th__style {
     @apply normal-case py-4 px-11 text-gray-600 text-xl font-semibold;
   }
+  .dth__style {
+    @apply normal-case py-4 px-11 text-xl font-semibold;
+  }
   .scheduleImg__style {
     @apply w-14 h-14 rounded-full border-2 border-solid border-white -ml-4 cursor-pointer transition-all duration-500 ease-out hover:scale-105 hover:-mt-1;
   }
@@ -44,6 +47,12 @@
   }
   .secButton__style {
     @apply rounded-lg text-2xl bg-blue-600 font-medium text-white normal-case hover:shadow-md hover:shadow-blue-400 cursor-pointer;
+  }
+  .activeNav {
+    @apply rounded-lg bg-blue-500 font-medium text-white normal-case shadow-lg shadow-blue-200;
+  }
+  .unActiveNav {
+    @apply font-medium text-gray-600 normal-case;
   }
 }
 

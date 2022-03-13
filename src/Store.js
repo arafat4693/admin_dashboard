@@ -5,7 +5,7 @@ const store = configureStore({
     middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
         serializableCheck: {
-            ignoredActions: ['admin/userDelete','admin/ascSort','admin/dscSort','admin/openBox'],
+            ignoredActions: ['admin/userDelete','admin/ascSort','admin/dscSort','admin/openBox','admin/userDetail'],
         }
     }),
 
