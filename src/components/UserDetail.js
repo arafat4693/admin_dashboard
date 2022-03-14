@@ -1,4 +1,4 @@
-import React,{useMemo, useCallback} from 'react'
+import React,{useMemo} from 'react'
 import {detail} from '../slice'
 import {useSelector} from 'react-redux'
 import { CheckIcon, BriefcaseIcon } from '@heroicons/react/outline'

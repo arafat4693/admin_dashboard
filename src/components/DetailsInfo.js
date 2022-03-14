@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import {detailsNav} from '../data'
+import Activity from './Activity'
 import SkillsTable from './SkillsTable'
 
 export default function DetailsInfo() {
@@ -15,9 +16,14 @@ export default function DetailsInfo() {
             </button>
             ))}
         </nav>
-        <div className="skillsDetail shadow-sm">
+        <div className="skillsDetail shadow-md mb-8 rounded-lg shadow-gray-200">
             <h2 className="bg-white text-gray-500 text-3xl normal-case font-medium rounded-lg py-7 px-9">User's Projects List</h2>
             <SkillsTable/>
+        </div>
+
+        <div className="activity shadow-md mb-8 rounded-lg py-7 px-9 bg-white shadow-gray-200">
+            <h2 className=" text-gray-500 text-3xl normal-case font-medium rounded-lg pb-10">User Activity Timeline</h2>
+            <Activity/>
         </div>
     </div>
     )
