@@ -6,6 +6,7 @@ import Completed from './Completed'
 import UserStatus from './UserStatus'
 import Bar from './Bar'
 import DetailsInfo from './DetailsInfo'
+import Footer from './Footer'
 
 export default function UserDetail() {
     const {avatarColor, avatarBg, avatarImg, user, status, statusBg, statusColor, role, roleIconColor, mail} = useSelector(detail)
@@ -16,6 +17,7 @@ export default function UserDetail() {
     },[roleIconColor])
 
     return (
+        <>
     <section className="userDetail grid grid-cols-3 gap-10 mb-16 mt-10">
         <div className="detail col-span-1">
 
@@ -76,6 +78,9 @@ export default function UserDetail() {
         </div>
 
         <DetailsInfo/>
+
     </section>
+    <Footer/>
+    </>
     )
 }

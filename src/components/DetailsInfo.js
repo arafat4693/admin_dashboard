@@ -1,30 +1,32 @@
 import React,{useState} from 'react'
 import {detailsNav} from '../data'
-import Activity from './Activity'
-import SkillsTable from './SkillsTable'
+import Account from './Account'
+import Notifications from './Notifications'
 
 export default function DetailsInfo() {
     const [activeNav, setActiveNav] = useState(detailsNav[0].navName)
+    const [navPage, setNavPage] = useState(detailsNav[0].navName)
+
+    function changeNav(e){
+        const current = e.target.innerText
+        setActiveNav(current)
+        if(current !== 'Security' && current !== 'Billing & Plans'){
+            setNavPage(current)   
+        }
+    }
 
     return (
     <div className="info col-span-2">
         <nav className="detailsNav flex mb-8">
             {detailsNav.map(({navName, Icon}, index)=>(
-            <button key={index} onClick={e=>setActiveNav(e.target.innerText)} className={`${navName===activeNav?'activeNav':'unActiveNav'} flex justify-center items-center px-8 py-5 text-2xl`}>
-                <Icon className="w-8 h-8 mr-2"/>
+            <button key={index} onClick={changeNav} className={`${navName===activeNav?'activeNav':'unActiveNav'} flex justify-center items-center px-8 py-5 text-2xl`}>
+                <Icon className="w-8 h-8 mr-2 pointer-events-none"/>
                 {navName}
             </button>
             ))}
         </nav>
-        <div className="skillsDetail shadow-md mb-8 rounded-lg shadow-gray-200">
-            <h2 className="bg-white text-gray-500 text-3xl normal-case font-medium rounded-lg py-7 px-9">User's Projects List</h2>
-            <SkillsTable/>
-        </div>
-
-        <div className="activity shadow-md mb-8 rounded-lg py-7 px-9 bg-white shadow-gray-200">
-            <h2 className=" text-gray-500 text-3xl normal-case font-medium rounded-lg pb-10">User Activity Timeline</h2>
-            <Activity/>
-        </div>
+        {navPage === "Account" && <Account/>}
+        {navPage === "Notifications" && <Notifications/>}
     </div>
     )
 }
