@@ -144,3 +144,30 @@ body {
   border-color: rgba(6, 21, 153, 0.6);
   box-shadow: 0 0.5rem 1rem rgba(6, 21, 153, 0.3);
 }
+
+.toggleBtn {
+  background-color: rgba(209, 213, 219, 1);
+}
+
+.toggleBtn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0.3rem;
+  transform: translateY(-50%);
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  background-color: #fff;
+}
+
+.toggleCheck:checked + .toggleBtn::before {
+  left: 56%;
+}
+
+.toggleCheck:checked + .toggleBtn {
+  background-color: rgba(59, 130, 246, 1);
+}

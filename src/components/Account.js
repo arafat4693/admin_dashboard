@@ -3,9 +3,9 @@ import Activity from './Activity'
 import InvoiceTable from './InvoiceTable'
 import SkillsTable from './SkillsTable'
 
-export default function Account() {
+export default function Account({display}) {
   return (
-    <>
+    <div className={`${display}`}>
         <div className="skillsDetail shadow-md mb-8 rounded-xl overflow-hidden shadow-gray-200">
             <h2 className="bg-white text-gray-500 text-3xl normal-case font-medium py-7 px-9">User's Projects List</h2>
             <SkillsTable/>
@@ -20,6 +20,6 @@ export default function Account() {
             <h2 className="bg-white text-gray-500 text-3xl normal-case font-medium py-7 px-9">Invoice</h2>
             <InvoiceTable/>
         </div>
-    </>
+    </div>
   )
 }

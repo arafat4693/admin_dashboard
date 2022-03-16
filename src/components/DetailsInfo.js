@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import {detailsNav} from '../data'
 import Account from './Account'
+import Connections from './Connections'
 import Notifications from './Notifications'
 
 export default function DetailsInfo() {
@@ -25,8 +26,9 @@ export default function DetailsInfo() {
             </button>
             ))}
         </nav>
-        {navPage === "Account" && <Account/>}
-        {navPage === "Notifications" && <Notifications/>}
+        <Account display={`${navPage === "Account"?"block":"hidden"}`}/>
+        <Notifications display={`${navPage === "Notifications"?"block":"hidden"}`}/>
+        <Connections display={`${navPage === "Connections"?"block":"hidden"}`}/>
     </div>
     )
 }
