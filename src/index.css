@@ -138,3 +138,9 @@ body {
 .inputContainer {
   height: calc(100% - 4.5rem);
 }
+
+.checkbox:checked + .custom__checkbox {
+  background-color: rgba(6, 21, 153, 0.6);
+  border-color: rgba(6, 21, 153, 0.6);
+  box-shadow: 0 0.5rem 1rem rgba(6, 21, 153, 0.3);
+}
