@@ -14,7 +14,7 @@ export default function DashBoard() {
                     <Route path="/dashboard/ecommerce" element={<ECommerce/>} />
                     <Route path="/user/list" element={<Users/>} />
                     <Route path="/user/view" element={<UserDetail/>} />
-                    <Route path="*" element={<Navigate to="/dashboard/ecommerce" />} />
+                    <Route path="/" element={<Navigate to="/dashboard/ecommerce" />} />
                 </Routes>
             </section>
         </main>
