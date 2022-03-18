@@ -1,71 +1,81 @@
-import React,{useRef} from 'react'
+import React,{useRef, useState, useEffect} from 'react'
 import Collapse from './Collapse'
 import Logo from './Logo'
 import SubMenu from './SubMenu'
+import {useSelector} from 'react-redux'
+import {currentRoute} from '../slice'
 
 export default function Menu() {
     const menuRef = useRef()
     const menu = useRef()
     const dashboardRef = useRef()
+    const [megaMenu, subMenu] = useSelector(currentRoute).split('/').slice(1)
+    const [active, setActive] = useState(subMenu)
+    const [parent, setParent] = useState(megaMenu)
+
+    useEffect(()=>{
+        setActive(subMenu)
+        setParent(megaMenu)
+    },[megaMenu, subMenu])
 
     function activeMenu(e){
-        menuRef.current.classList.remove('active__style')
-        menuRef.current.classList.add('text-gray-600')
-        e.target.classList.add('active__style')
-        e.target.classList.remove('text-gray-600')
-        menuRef.current = e.target
+        // menuRef.current.classList.remove('active__style')
+        // menuRef.current.classList.add('text-gray-600')
+        // e.target.classList.add('active__style')
+        // e.target.classList.remove('text-gray-600')
+        // menuRef.current = e.target
     }
 
     function openSubMenu(e){
-        const icon = e.target.querySelector('.dir')
-        const subMenu = e.target.nextElementSibling
-        const current = e.target
+        // const icon = e.target.querySelector('.dir')
+        // const subMenu = e.target.nextElementSibling
+        // const current = e.target
 
-        if(current.classList.contains('collapse') && subMenu.style.maxHeight){
-            menu.current = null
-            current.classList.remove('bg-gray-100')
-        }else if(current.classList.contains('collapse') && !subMenu.style.maxHeight){
-            if(menu.current){
-                const menuIcon = menu.current.querySelector('.dir')
-                menu.current.classList.remove('bg-gray-100')
-                menu.current.nextElementSibling.style.maxHeight = null
-                menuIcon.classList.add('fa-chevron-right')
-                menuIcon.classList.remove('fa-chevron-down')
-            }
-            if(dashboardRef.current){
-                const dashIcon = dashboardRef.current.querySelector('.dir')
-                dashboardRef.current.nextElementSibling.style.maxHeight = null
-                dashIcon.classList.add('fa-chevron-right')
-                dashIcon.classList.remove('fa-chevron-down')
-                dashboardRef.current = null
-            }
-            menu.current = current
-            current.classList.add('bg-gray-100')
-        }
+        // if(current.classList.contains('collapse') && subMenu.style.maxHeight){
+        //     menu.current = null
+        //     current.classList.remove('bg-gray-100')
+        // }else if(current.classList.contains('collapse') && !subMenu.style.maxHeight){
+        //     if(menu.current){
+        //         const menuIcon = menu.current.querySelector('.dir')
+        //         menu.current.classList.remove('bg-gray-100')
+        //         menu.current.nextElementSibling.style.maxHeight = null
+        //         menuIcon.classList.add('fa-chevron-right')
+        //         menuIcon.classList.remove('fa-chevron-down')
+        //     }
+        //     if(dashboardRef.current){
+        //         const dashIcon = dashboardRef.current.querySelector('.dir')
+        //         dashboardRef.current.nextElementSibling.style.maxHeight = null
+        //         dashIcon.classList.add('fa-chevron-right')
+        //         dashIcon.classList.remove('fa-chevron-down')
+        //         dashboardRef.current = null
+        //     }
+        //     menu.current = current
+        //     current.classList.add('bg-gray-100')
+        // }
 
-        if(current.classList.contains('dashBoard') && !subMenu.style.maxHeight){
-            if(menu.current){
-                const menu__icon = menu.current.querySelector('.dir')
-                menu.current.classList.remove('bg-gray-100')
-                menu__icon.classList.add('fa-chevron-right')
-                menu__icon.classList.remove('fa-chevron-down')
-                menu.current.nextElementSibling.style.maxHeight = null
-                menu.current = null
-            }
-            dashboardRef.current = current
-        }else if(current.classList.contains('dashBoard') && subMenu.style.maxHeight){
-            dashboardRef.current = null
-        }
+        // if(current.classList.contains('dashBoard') && !subMenu.style.maxHeight){
+        //     if(menu.current){
+        //         const menu__icon = menu.current.querySelector('.dir')
+        //         menu.current.classList.remove('bg-gray-100')
+        //         menu__icon.classList.add('fa-chevron-right')
+        //         menu__icon.classList.remove('fa-chevron-down')
+        //         menu.current.nextElementSibling.style.maxHeight = null
+        //         menu.current = null
+        //     }
+        //     dashboardRef.current = current
+        // }else if(current.classList.contains('dashBoard') && subMenu.style.maxHeight){
+        //     dashboardRef.current = null
+        // }
 
-        if(subMenu.style.maxHeight){
-            subMenu.style.maxHeight = null
-            icon.classList.add('fa-chevron-right')
-            icon.classList.remove('fa-chevron-down')
-        }else{
-            subMenu.style.maxHeight = subMenu.scrollHeight + "px"
-            icon.classList.remove('fa-chevron-right')
-            icon.classList.add('fa-chevron-down')
-        }
+        // if(subMenu.style.maxHeight){
+        //     subMenu.style.maxHeight = null
+        //     icon.classList.add('fa-chevron-right')
+        //     icon.classList.remove('fa-chevron-down')
+        // }else{
+        //     subMenu.style.maxHeight = subMenu.scrollHeight + "px"
+        //     icon.classList.remove('fa-chevron-right')
+        //     icon.classList.add('fa-chevron-down')
+        // }
     }
 
     return (
@@ -76,7 +86,7 @@ export default function Menu() {
             </div>
             <nav className="menu__container h-full pl-6 pr-4 overflow-y-scroll myScroll">
 
-                <div className="dashBoard__container">
+                {/* <div className="dashBoard__container">
                     <div onClick={openSubMenu} className="dashBoard bg-gray-100 rounded-lg flex justify-between px-6 py-5 cursor-pointer mb-2 hover:pl-8 transition-all duration-300">
                         <div className="name flex items-center gap-4 pointer-events-none select-none">
                             <i className="fas fa-home text-2xl text-gray-700"></i>
@@ -86,16 +96,19 @@ export default function Menu() {
                             <span className="flex items-center justify-center bg-orange-200 w-9 h-9 rounded-full text-xl text-orange-600 font-semibold">2</span>
                             <i className="fas fa-chevron-right text-gray-400 text-lg dir"></i>
                         </div>
-                    </div>
+                    </div> */}
 
-                    <div className="submenu transition-all duration-400 overflow-hidden max-h-0">
-                        <div onClick={activeMenu} ref={menuRef} className="select-none rounded-lg flex items-end gap-4 cursor-pointer pl-7 py-5 hover:pl-9 transition-all duration-300 active__style">
+                    {/* <div className="submenu transition-all duration-400 overflow-hidden"> */}
+                        {/* <div onClick={activeMenu} ref={menuRef} className="select-none rounded-lg flex items-end gap-4 cursor-pointer pl-7 py-5 hover:pl-9 transition-all duration-300 active__style">
                             <i className="far fa-circle text-lg pointer-events-none"></i>
                             <h3 className="font-normal tracking-wide text-2xl pointer-events-none">analytics</h3>
-                        </div>
-                        <SubMenu name="eCommerce" activeMenu={activeMenu} iconName="far fa-circle"/>
-                    </div>
-                </div>
+                        </div> */}
+                        <Collapse iconName="fas fa-home" name="dashboard" parent={parent} setParent={setParent} value>
+                            <SubMenu name="eCommerce" iconName="far fa-circle" active={active} setActive={setActive}/>
+                            <SubMenu name="Analytics" iconName="far fa-circle" active={active} setActive={setActive}/>
+                        </Collapse>
+                    {/* </div> */}
+                {/* </div> */}
 
                 <div className="pages pt-12">
                     <h3 className="font-medium text-gray-400 text-2xl uppercase pb-4 pl-6 select-none pointer-events-none">apps & pages</h3>
@@ -104,11 +117,11 @@ export default function Menu() {
                     <SubMenu name="Todo" activeMenu={activeMenu} iconName="far fa-check-square"/>
                     <SubMenu name="Calendar" activeMenu={activeMenu} iconName="far fa-calendar"/>
 
-                    <Collapse iconName="far fa-file-alt" openSubMenu={openSubMenu} name="Invoice">
-                        <SubMenu name="List" activeMenu={activeMenu} iconName="far fa-circle"/>
-                        <SubMenu name="Preview" activeMenu={activeMenu} iconName="far fa-circle"/>
-                        <SubMenu name="Edit" activeMenu={activeMenu} iconName="far fa-circle"/>
-                        <SubMenu name="Add" activeMenu={activeMenu} iconName="far fa-circle"/>
+                    <Collapse iconName="far fa-file-alt" name="Invoice" parent={parent} setParent={setParent}>
+                        <SubMenu name="List" iconName="far fa-circle" active={active} setActive={setActive}/>
+                        <SubMenu name="Preview" iconName="far fa-circle" active={active} setActive={setActive}/>
+                        <SubMenu name="Edit" iconName="far fa-circle" active={active} setActive={setActive}/>
+                        <SubMenu name="Add" iconName="far fa-circle" active={active} setActive={setActive}/>
                     </Collapse>
 
                     <Collapse iconName="fas fa-shield-alt" openSubMenu={openSubMenu} name="Roles & Permission">

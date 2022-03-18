@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import News from './News'
 import ReactApexChart from 'react-apexcharts'
 import {barChart, lineChart, pieChart, doubleBarChart, customAngleChart, radialBarChart} from '../data'
@@ -10,6 +10,9 @@ import ReactTooltip from 'react-tooltip';
 import BrowserCard from './BrowserCard'
 import TransIcon from './TransIcon'
 import Footer from './Footer'
+import {useLocation } from "react-router-dom"
+import {useDispatch} from 'react-redux'
+import {setLoc} from '../slice'
 
 export default function ECommerce() {
     const [bar] = useState(barChart)
@@ -17,6 +20,12 @@ export default function ECommerce() {
     const [donut] = useState(pieChart)
     const [doubleBar] = useState(doubleBarChart)
     const [customAngle] = useState(customAngleChart)
+    const { pathname } = useLocation()
+    const dispatch = useDispatch()
+    
+    useEffect(()=>{
+        dispatch(setLoc(pathname))
+    },[pathname])
 
     return (
         <section className="eCommerce">

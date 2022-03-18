@@ -8,6 +8,8 @@ import {useSelector, useDispatch} from 'react-redux'
 import {users} from '../slice'
 import {openBox} from '../slice'
 import Footer from './Footer';
+import {useLocation } from "react-router-dom"
+import {setLoc} from '../slice'
 
 export default function Users() {
   const allUsers = useSelector(users)
@@ -22,6 +24,12 @@ export default function Users() {
   })
   const [inputState, setInputState] = useState('')
   const dispatch = useDispatch()
+
+  const { pathname } = useLocation()
+    
+  useEffect(()=>{
+      dispatch(setLoc(pathname))
+  },[pathname])
 
   function numberOfUser(e){
     setShowUsers(+e.target.value)

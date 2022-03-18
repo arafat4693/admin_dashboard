@@ -17,7 +17,8 @@ const initialState = {
             email: ''
         }
     },
-    details: {...JSON.parse(localStorage.getItem(KEY))}
+    details: {...JSON.parse(localStorage.getItem(KEY))},
+    currentLoc: '/dashboard/ecommerce'
 }
 
 export const admin = createSlice({
@@ -59,6 +60,9 @@ export const admin = createSlice({
             const detailedUser = state.usersList.find(user=>user.id===detailId)
             state.details = detailedUser
             localStorage.setItem(KEY, JSON.stringify(detailedUser))
+        },
+        setLoc: (state, action) => {
+            state.currentLoc = action.payload
         }
     }
 })
@@ -66,5 +70,6 @@ export const admin = createSlice({
 export const users = (state)=>state.users.usersList
 export const lb = (state) => state.users.lbVisible
 export const detail = (state) => state.users.details
-export const {userDelete, ascSort, dscSort, openBox, userDetail} = admin.actions
+export const currentRoute = (state) => state.users.currentLoc
+export const {userDelete, ascSort, dscSort, openBox, userDetail, setLoc} = admin.actions
 export default admin.reducer 

@@ -1,4 +1,4 @@
-import React,{useMemo} from 'react'
+import React,{useMemo, useEffect} from 'react'
 import {detail} from '../slice'
 import {useSelector} from 'react-redux'
 import { CheckIcon, BriefcaseIcon } from '@heroicons/react/outline'
@@ -7,6 +7,9 @@ import UserStatus from './UserStatus'
 import Bar from './Bar'
 import DetailsInfo from './DetailsInfo'
 import Footer from './Footer'
+import {useLocation } from "react-router-dom"
+import {useDispatch} from 'react-redux'
+import {setLoc} from '../slice'
 
 export default function UserDetail() {
     const {avatarColor, avatarBg, avatarImg, user, status, statusBg, statusColor, role, roleIconColor, mail} = useSelector(detail)
@@ -15,6 +18,13 @@ export default function UserDetail() {
         const color = roleIconColor.split('-')
         return `bg-${color[1]}-100`
     },[roleIconColor])
+
+    const { pathname } = useLocation()
+    const dispatch = useDispatch()
+    
+    useEffect(()=>{
+        dispatch(setLoc(pathname))
+    },[pathname])
 
     return (
         <>
