@@ -1,10 +1,12 @@
 import React,{useRef} from 'react'
 
-export default function SubMenu({name, iconName, active, setActive}) {
+export default function SubMenu({name, iconName, active, setActive, collapse, setParent, setNParent}) {
     const nameRef = useRef()
     
     function activeMenu(){
         setActive(nameRef.current.innerText.toLowerCase())
+        setParent(collapse)
+        setNParent(null)
     }
 
     return (

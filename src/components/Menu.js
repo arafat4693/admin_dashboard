@@ -12,11 +12,15 @@ export default function Menu() {
     const [megaMenu, subMenu] = useSelector(currentRoute).split('/').slice(1)
     const [active, setActive] = useState(subMenu)
     const [parent, setParent] = useState(megaMenu)
+    const [nParent, setNParent] = useState(null)
 
     useEffect(()=>{
         setActive(subMenu)
         setParent(megaMenu)
+        setNParent(null)
     },[megaMenu, subMenu])
+
+    console.log(parent, nParent, active)
 
     function activeMenu(e){
         // menuRef.current.classList.remove('active__style')
@@ -103,9 +107,9 @@ export default function Menu() {
                             <i className="far fa-circle text-lg pointer-events-none"></i>
                             <h3 className="font-normal tracking-wide text-2xl pointer-events-none">analytics</h3>
                         </div> */}
-                        <Collapse iconName="fas fa-home" name="dashboard" parent={parent} setParent={setParent} value>
-                            <SubMenu name="eCommerce" iconName="far fa-circle" active={active} setActive={setActive}/>
-                            <SubMenu name="Analytics" iconName="far fa-circle" active={active} setActive={setActive}/>
+                        <Collapse iconName="fas fa-home" name="Dashboard" nParent={nParent} parent={parent} setNParent={setNParent} value active={active}>
+                            <SubMenu name="eCommerce" iconName="far fa-circle" active={active} setActive={setActive} collapse="dashboard" setParent={setParent} setNParent={setNParent}/>
+                            <SubMenu name="Analytics" iconName="far fa-circle" active={active} setActive={setActive} collapse="dashboard" setParent={setParent} setNParent={setNParent}/>
                         </Collapse>
                     {/* </div> */}
                 {/* </div> */}
@@ -117,16 +121,16 @@ export default function Menu() {
                     <SubMenu name="Todo" activeMenu={activeMenu} iconName="far fa-check-square"/>
                     <SubMenu name="Calendar" activeMenu={activeMenu} iconName="far fa-calendar"/>
 
-                    <Collapse iconName="far fa-file-alt" name="Invoice" parent={parent} setParent={setParent}>
-                        <SubMenu name="List" iconName="far fa-circle" active={active} setActive={setActive}/>
-                        <SubMenu name="Preview" iconName="far fa-circle" active={active} setActive={setActive}/>
-                        <SubMenu name="Edit" iconName="far fa-circle" active={active} setActive={setActive}/>
-                        <SubMenu name="Add" iconName="far fa-circle" active={active} setActive={setActive}/>
+                    <Collapse iconName="far fa-file-alt" name="Invoice" nParent={nParent} setNParent={setNParent} parent={parent} active={active}>
+                        <SubMenu name="List" iconName="far fa-circle" active={active} setActive={setActive} collapse="invoice" setParent={setParent} setNParent={setNParent}/>
+                        <SubMenu name="Preview" iconName="far fa-circle" active={active} setActive={setActive} collapse="invoice" setParent={setParent} setNParent={setNParent}/>
+                        <SubMenu name="Edit" iconName="far fa-circle" active={active} setActive={setActive} collapse="invoice" setParent={setParent} setNParent={setNParent}/>
+                        <SubMenu name="Add" iconName="far fa-circle" active={active} setActive={setActive} collapse="invoice" setParent={setParent} setNParent={setNParent}/>
                     </Collapse>
 
-                    <Collapse iconName="fas fa-shield-alt" openSubMenu={openSubMenu} name="Roles & Permission">
-                        <SubMenu name="Roles" activeMenu={activeMenu} iconName="far fa-circle"/>
-                        <SubMenu name="Permission" activeMenu={activeMenu} iconName="far fa-circle"/>
+                    <Collapse iconName="fas fa-shield-alt" name="Roles & Permission" nParent={nParent} setNParent={setNParent} parent={parent} active={active}>
+                        <SubMenu name="Roles" iconName="far fa-circle" active={active} setActive={setActive} collapse="roles & permission" setParent={setParent} setNParent={setNParent}/>
+                        <SubMenu name="Permission" iconName="far fa-circle" active={active} setActive={setActive} collapse="roles & permission" setParent={setParent} setNParent={setNParent}/>
                     </Collapse>
 
                     <Collapse iconName="fas fa-shopping-cart" openSubMenu={openSubMenu} name="eCommerce">
@@ -136,9 +140,9 @@ export default function Menu() {
                         <SubMenu name="Checkout" activeMenu={activeMenu} iconName="far fa-circle"/>
                     </Collapse>
 
-                    <Collapse iconName="far fa-user" openSubMenu={openSubMenu} name="User">
-                        <SubMenu name="List" activeMenu={activeMenu} iconName="far fa-circle"/>
-                        <SubMenu name="View" activeMenu={activeMenu} iconName="far fa-circle"/>
+                    <Collapse iconName="far fa-user" name="User" nParent={nParent} setNParent={setNParent} parent={parent} active={active}>
+                        <SubMenu name="List" iconName="far fa-circle" active={active} setActive={setActive} collapse="user" setParent={setParent} setNParent={setNParent}/>
+                        <SubMenu name="View" iconName="far fa-circle" active={active} setActive={setActive} collapse="user" setParent={setParent} setNParent={setNParent}/>
                     </Collapse>
 
                     <Collapse iconName="far fa-file-alt" openSubMenu={openSubMenu} name="Pages">
