@@ -9,18 +9,23 @@ import DetailsInfo from './DetailsInfo'
 import Footer from './Footer'
 import {useLocation } from "react-router-dom"
 import {useDispatch} from 'react-redux'
-import {setLoc} from '../slice'
+import {setLoc,userDetail} from '../slice'
 
 export default function UserDetail() {
-    const {avatarColor, avatarBg, avatarImg, user, status, statusBg, statusColor, role, roleIconColor, mail} = useSelector(detail)
+    const {avatarColor, avatarBg, avatarImg, user, status, statusBg, statusColor, role, roleIconColor, mail, id} = useSelector(detail)
+    const { pathname } = useLocation()
+    const dispatch = useDispatch()
+
+    useEffect(()=>{
+        dispatch(userDetail({id}))
+    },[])
 
     const roleBg = useMemo(()=>{
+        if(!roleIconColor) return
         const color = roleIconColor.split('-')
         return `bg-${color[1]}-100`
     },[roleIconColor])
 
-    const { pathname } = useLocation()
-    const dispatch = useDispatch()
     
     useEffect(()=>{
         dispatch(setLoc(pathname))
@@ -28,7 +33,7 @@ export default function UserDetail() {
 
     return (
         <>
-    <section className="userDetail grid grid-cols-3 gap-10 mb-16 mt-10">
+    {id?<section className="userDetail grid grid-cols-3 gap-10 mb-16 mt-10">
         <div className="detail col-span-1">
 
             <div className="aboutUser bg-white rounded-xl shadow-md pt-20 mb-10">
@@ -90,6 +95,7 @@ export default function UserDetail() {
         <DetailsInfo/>
 
     </section>
+    : <h1>no user found</h1>}
     <Footer/>
     </>
     )

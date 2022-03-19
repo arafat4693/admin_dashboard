@@ -22,7 +22,7 @@ export default function ActionMenu({userId}) {
 
     function userDetails(e){
         e.preventDefault()
-        dispatch(userDetail({visibleClass:true, id:userId}))
+        dispatch(userDetail({id:userId}))
         e.target.click()
         setVisibility(false)
     }
