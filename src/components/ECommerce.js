@@ -10,7 +10,7 @@ import ReactTooltip from 'react-tooltip';
 import BrowserCard from './BrowserCard'
 import TransIcon from './TransIcon'
 import Footer from './Footer'
-import {useLocation } from "react-router-dom"
+import {useLocation, Link} from "react-router-dom"
 import {useDispatch} from 'react-redux'
 import {setLoc} from '../slice'
 
@@ -29,6 +29,8 @@ export default function ECommerce() {
 
     return (
         <section className="eCommerce">
+
+            <Link to="/user/list" className="fixed bottom-16 right-5 text-xl bg-red-500 text-white font-semibold py-3 px-6 shadow-lg shadow-red-500 rounded-lg transition-all hover:shadow-none">Users List</Link>
 
             <div className="eCommerce__statistics grid grid-cols-3 gap-10 my-8">
                 <div className="congrats bg-white shadow-lg p-7 rounded-xl overflow-hidden relative">

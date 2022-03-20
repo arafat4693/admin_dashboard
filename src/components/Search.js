@@ -1,5 +1,6 @@
 import React,{useState, useRef} from 'react'
 import {contacts, files, pages} from '../data'
+import {Link} from 'react-router-dom'
 
 export default function Search({setOpenSrc}) {
     const [srcValue, setSrcValue] = useState('')
@@ -11,13 +12,15 @@ export default function Search({setOpenSrc}) {
         contacts: []
     })
 
-    function searchResult(){
-        console.log('hi')
+    function getRes(node){
+        node.click()
+        closeSrc()
     }
 
     function submit(e){
         e.preventDefault()
-        console.log('hello')
+        const resultBox = resultRef.current
+        getRes(resultBox.querySelector('.bg-gray-100'))
     }
 
     function closeSrc(){
@@ -76,7 +79,7 @@ export default function Search({setOpenSrc}) {
     return (
         <>
             <form onSubmit={submit} className="w-full searchBar flex items-center justify-between gap-5">
-                <i className="fas fa-search text-2xl text-gray-400 cursor-pointer" onClick={searchResult}></i>
+                <i className="fas fa-search text-2xl text-gray-400 cursor-pointer" onClick={submit}></i>
                 <input autoFocus="autofocus" ref={srcRef} value={srcValue} onKeyDown={keyControl} onChange={searching} type="text" placeholder="Search here" className="normal-case py-3 w-full placeholder:text-gray-400 text-gray-500 placeholder:font-normal font-medium text-xl"/>
                 <i className="fas fa-times text-3xl text-gray-400 cursor-pointer" onClick={closeSrc}></i>
             </form>
@@ -93,10 +96,10 @@ export default function Search({setOpenSrc}) {
                         </p> 
                         : 
                         data.pages.map((page, ind) => (
-                            <p onMouseEnter={selectActive} key={page.id} className={` cursor-pointer flex items-center gap-4 p-5 font-normal text-xl text-gray-500 tracking-wider ${ind===0?'bg-gray-100' : ''}`} data-pos={ind}>
-                                <i className="fas fa-envelope text-2xl text-gray-400 pointer-events-none"></i>
+                            <Link to={page.path}><p onClick={e=>getRes(e.target)} onMouseEnter={selectActive} key={page.id} className={`normal-case cursor-pointer flex items-center gap-4 p-5 font-medium text-xl text-gray-400 tracking-wider ${ind===0?'bg-gray-100' : ''}`} data-pos={ind}>
+                                <page.Icon className="w-8 h-8 text-gray-400 pointer-events-none"/>
                                 {page.title}
-                            </p>
+                            </p></Link>
                         ))
                     }
                 </div>

@@ -10,6 +10,7 @@ import Footer from './Footer'
 import {useLocation } from "react-router-dom"
 import {useDispatch} from 'react-redux'
 import {setLoc,userDetail} from '../slice'
+import {Link} from "react-router-dom";
 
 export default function UserDetail() {
     const {avatarColor, avatarBg, avatarImg, user, status, statusBg, statusColor, role, roleIconColor, mail, id} = useSelector(detail)
@@ -33,7 +34,9 @@ export default function UserDetail() {
 
     return (
         <>
-    {id?<section className="userDetail grid grid-cols-3 gap-10 mb-16 mt-10">
+    {id?
+    <>
+    <section className="userDetail grid grid-cols-3 gap-10 mb-16 mt-10">
         <div className="detail col-span-1">
 
             <div className="aboutUser bg-white rounded-xl shadow-md pt-20 mb-10">
@@ -95,8 +98,12 @@ export default function UserDetail() {
         <DetailsInfo/>
 
     </section>
-    : <h1>no user found</h1>}
     <Footer/>
+    </>
+    :<div className="errorMsg mt-8">
+        <h2 className="normal-case bg-red-100 text-red-500 text-2xl drop-shadow font-semibold py-3 pl-4 rounded-tl-xl rounded-tr-xl">User not found</h2>
+        <h2 className="normal-case bg-red-100 text-red-500 text-2xl font-medium py-3 pl-4 rounded-bl-xl rounded-br-xl">User might've got deleted. Check list of all Users: <Link to="/user/list" className="text-blue-500">Users List</Link></h2>
+    </div>}
     </>
     )
 }

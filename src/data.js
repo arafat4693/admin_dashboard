@@ -1,29 +1,124 @@
-import { PencilIcon, UserIcon, CogIcon, DatabaseIcon, AcademicCapIcon, UserCircleIcon, BellIcon, LinkIcon, LockClosedIcon, BookmarkIcon } from '@heroicons/react/outline'
+import { ChartSquareBarIcon, ShoppingCartIcon, ShieldCheckIcon, PlusIcon, PencilAltIcon, DocumentTextIcon, ViewListIcon, CalendarIcon, ClipboardCheckIcon, ChatAltIcon, MailIcon, HomeIcon, PencilIcon, UserIcon, CogIcon, DatabaseIcon, AcademicCapIcon, UserCircleIcon, BellIcon, LinkIcon, LockClosedIcon, BookmarkIcon } from '@heroicons/react/outline'
 const pages = [
     {
         id: 1,
-        title: "list",
-        path: "/list"
+        title: "eCommerce Dashboard",
+        path: "/dashboard/ecommerce",
+        Icon: HomeIcon
     },
     {
         id: 2,
-        title: "analytics",
-        path: "/analytics"
+        title: "Analytics Dashboard",
+        path: "#",
+        Icon: HomeIcon
     },
     {
         id: 3,
-        title: "invoice",
-        path: "/invoice"
+        title: "Email",
+        path: "#",
+        Icon: MailIcon
     },
     {
         id: 4,
-        title: "registration",
-        path: "/registration"
+        title: "Chat",
+        path: "#",
+        Icon: ChatAltIcon
     },
     {
-        id: 4,
-        title: "mail",
-        path: "/mail"
+        id: 5,
+        title: "Todo",
+        path: "#",
+        Icon: ClipboardCheckIcon
+    },
+    {
+      id: 6,
+      title: "Calendar",
+      path: "#",
+      Icon: CalendarIcon
+    },
+    {
+      id: 7,
+      title: "Calendar",
+      path: "#",
+      Icon: CalendarIcon
+    },
+    {
+      id: 8,
+      title: "Invoice Full List",
+      path: "#",
+      Icon: ViewListIcon
+    },
+    {
+      id: 9,
+      title: "Invoice Preview",
+      path: "#",
+      Icon: DocumentTextIcon
+    },
+    {
+      id: 10,
+      title: "Invoice Edit",
+      path: "#",
+      Icon: PencilAltIcon
+    },
+    {
+      id: 11,
+      title: "Invoice Add",
+      path: "#",
+      Icon: PlusIcon
+    },
+    {
+      id: 12,
+      title: "Roles",
+      path: "#",
+      Icon: ShieldCheckIcon
+    },
+    {
+      id: 13,
+      title: "Permissions",
+      path: "#",
+      Icon: ShieldCheckIcon
+    },
+    {
+      id: 14,
+      title: "eCommerce Shop",
+      path: "#",
+      Icon: ShoppingCartIcon
+    },
+    {
+      id: 15,
+      title: "eCommerce Details",
+      path: "#",
+      Icon: ShoppingCartIcon
+    },
+    {
+      id: 16,
+      title: "eCommerce Wish List",
+      path: "#",
+      Icon: ShoppingCartIcon
+    },
+    {
+      id: 17,
+      title: "eCommerce Checkout",
+      path: "#",
+      Icon: ShoppingCartIcon
+    },
+    {
+      id: 18,
+      title: "User List",
+      path: "/user/list",
+      Icon: UserIcon
+    },
+    {
+      id: 19,
+      title: "User View",
+      path: "/user/view",
+      Icon: UserIcon
+    },
+    {
+      id: 20,
+      title: "Chart",
+      path: "#",
+      Icon: ChartSquareBarIcon
     }
 ]
 
@@ -31,21 +126,21 @@ const files = [
     {
         id: 1,
         title: "my resume",
-        path: "null",
+        path: "#",
         img: "/images/doc.png",
         name: "arthur gonzales"
     },
     {
         id: 2,
         title: "weather api",
-        path: "null",
+        path: "#",
         img: "/images/json.png",
         name: "ashura ark"
     },
     {
         id: 3,
         title: "passport image",
-        path: "null",
+        path: "#",
         img: "/images/pdf.png",
         name: "sunny islam"
     }
@@ -55,28 +150,28 @@ const contacts = [
     {
         id: 1,
         title: "michella niez",
-        path: "null",
+        path: "#",
         img: "/images/pic1.png",
         mail: "michella-niez@gmail.com"
     },
     {
         id: 2,
         title: "vivek roy",
-        path: "null",
+        path: "#",
         img: "/images/pic2.png",
         mail: "vivek-roy@yahoo.com"
     },
     {
         id: 3,
         title: "rave vermillion",
-        path: "null",
+        path: "#",
         img: "/images/pic3.png",
         mail: "rave@hotmail.com"
     },
     {
         id: 4,
         title: "arthur law",
-        path: "null",
+        path: "#",
         img: "/images/pic4.png",
         mail: "arthur-law@gmail.com"
     }
