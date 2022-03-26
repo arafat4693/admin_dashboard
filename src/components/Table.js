@@ -7,12 +7,12 @@ import Sales from './Sales'
 
 export default function Table() {
     return (
-            <table className="w-full">
+            <table className="w-[820px] mxl:w-full">
                 <thead className="bg-gray-200">
                     <tr className="text-left">
-                        <th className="th__style w-29%">COMPANY</th>
-                        <th className="th__style w-1/4">CATEGORY</th>
-                        <th className="th__style w-1/6">VIEWS</th>
+                        <th className="th__style">COMPANY</th>
+                        <th className="th__style">CATEGORY</th>
+                        <th className="th__style">VIEWS</th>
                         <th className="th__style">REVENUE</th>
                         <th className="th__style">SALES</th>
                     </tr>

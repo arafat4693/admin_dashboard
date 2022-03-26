@@ -552,6 +552,7 @@ const pieChart = {
         labels: ['Product', 'App', 'Service'],
       chart: {
         type: 'donut',
+        height: 350
       },
       dataLabels: {
         enabled: false,
@@ -561,7 +562,7 @@ const pieChart = {
       },
       plotOptions: {
         pie: {
-          customScale: 1.1,
+          // size: '70%',
           donut: {
             size: '60%',
             labels: {
@@ -605,14 +606,60 @@ const pieChart = {
           }
         },
       },
-      responsive: [{
-        breakpoint: 480,
+      responsive: [
+      //   {
+      //   breakpoint: 1020,
+      //   options: {
+      //     grid: {
+      //       padding: {
+      //           top: -15,
+      //           bottom: -15
+      //       }
+      //   },
+      //     plotOptions:{
+      //       pie:{
+      //         customScale: 0.8,
+      //       }
+      //     }
+      //   }
+      // },
+      {
+        breakpoint: 768,
         options: {
           chart: {
-            width: 200
+            height: 160
           },
         }
-      }]
+      },
+      {
+        breakpoint: 350,
+        options: {
+          chart: {
+            height: 110
+          },
+        }
+      },
+      // {
+      //   breakpoint: 420,
+      //   options: {
+      //     plotOptions:{
+      //       pie:{
+      //         customScale: 0.8,
+      //       }
+      //     }
+      //   }
+      // },
+      // {
+      //   breakpoint: 350,
+      //   options: {
+      //     plotOptions:{
+      //       pie:{
+      //         customScale: 0.9,
+      //       }
+      //     }
+      //   }
+      // }
+    ]
     },
   
 }

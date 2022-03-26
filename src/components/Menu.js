@@ -18,12 +18,12 @@ export default function Menu() {
     },[megaMenu, subMenu])
 
     return (
-        <section className="menu w-97 bg-white h-screen fixed top-0 left-0 shadow-lg">
+        <section className="menu w-97 bg-white h-screen fixed top-0 left-0 shadow-lg hidden xlg:block">
             <div className="menu__logo h-24 flex items-center justify-between px-8">
                 <Logo/>
                 <span className="circles flex justify-center items-center w-8 h-8 rounded-full border-2 border-solid border-blue-600"></span>
             </div>
-            <nav className="menu__container h-full pl-6 pr-4 overflow-y-scroll myScroll">
+            <nav className="menu__container pl-6 pr-4 overflow-y-scroll myScroll">
 
                 <Collapse iconName="fas fa-home" name="Dashboard" nParent={nParent} parent={parent} setNParent={setNParent} value active={active}>
                     <SubMenu name="eCommerce" iconName="far fa-circle" active={active} setActive={setActive} collapse="dashboard" setParent={setParent} setNParent={setNParent} loc="/dashboard/ecommerce"/>

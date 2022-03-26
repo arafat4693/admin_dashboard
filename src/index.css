@@ -76,7 +76,7 @@
 }
 
 html {
-  font-size: 62.5%;
+  font-size: 50%;
   overflow-x: hidden;
   scroll-padding-top: 6rem;
   scroll-behavior: smooth;
@@ -170,4 +170,16 @@ body {
 
 .toggleCheck:checked + .toggleBtn {
   background-color: rgba(59, 130, 246, 1);
+}
+
+@media (min-width: 991px) {
+  html {
+    font-size: 55%;
+  }
+}
+
+@media (min-width: 1315px) {
+  html {
+    font-size: 62.5%;
+  }
 }

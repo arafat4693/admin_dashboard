@@ -32,7 +32,7 @@ export default function ECommerce() {
 
             <Link to="/user/list" className="fixed bottom-16 right-5 text-xl bg-red-500 text-white font-semibold py-3 px-6 shadow-lg shadow-red-500 rounded-lg transition-all hover:shadow-none">Users List</Link>
 
-            <div className="eCommerce__statistics grid grid-cols-3 gap-10 my-8">
+            <div className="eCommerce__statistics grid grid-cols-1 md:grid-cols-2 xlg:grid-cols-3 gap-10 my-8">
                 <div className="congrats bg-white shadow-lg p-7 rounded-xl overflow-hidden relative">
                     <img src="/images/medal.png" alt="medal" className="absolute top-0 right-4"/>
                     <h3 className="font-medium text-2xl text-gray-600">congratulations 🎉 sunny!</h3>
@@ -40,12 +40,12 @@ export default function ECommerce() {
                     <h2 className="font-medium text-4xl text-blue-600 mt-14 mb-4 cursor-pointer">$50.6k</h2>
                     <button className="py-4 px-7 rounded-xl text-white text-2xl bg-blue-600 font-semibold shadow-md hover:shadow-blue-500 transition-all duration-150 capitalize">view sales</button>
                 </div>
-                <div className="statistics bg-white col-span-2 shadow-lg rounded-xl overflow-hidden">
+                <div className="statistics bg-white xlg:col-span-2 shadow-lg rounded-xl overflow-hidden">
                     <div className="statisticsHeader p-7 pl-12 flex items-center justify-between">
                         <h3 className="font-medium text-3xl text-gray-600">statistics</h3>
                         <p className="font-normal text-lg text-gray-500 normal-case tracking-wider">Updated 2 months ago</p>
                     </div>
-                    <div className="statisticsResult p-12 pr-24 flex items-center justify-between">
+                    <div className="statisticsResult p-12 grid grid-cols-1 sm:grid-cols-2 xlg:grid-cols-4 gap-8">
                         <News icon="fas fa-chart-line" bgColor="bg-blue-100" color="text-blue-600" amount="320k" name="sales"/>
                         <News icon="far fa-user" color="text-teal-600" bgColor="bg-teal-100" amount="6.349k" name="customers"/>
                         <News icon="fas fa-cube" color="text-red-600" bgColor="bg-red-100" amount="1.349k" name="products"/>
@@ -54,21 +54,21 @@ export default function ECommerce() {
                 </div>
             </div>
 
-            <div className="eCommerce__reports grid grid-cols-3 gap-10 mb-8">
-                <div className="reportNews grid grid-cols-2 gap-8">
+            <div className="eCommerce__reports grid grid-cols-1 lg:grid-cols-3 gap-10 mb-8">
+                <div className="reportNews grid grid-cols-2 lg:grid-cols-2 md:grid-cols-4 gap-8">
                     <div className="pt-8 pl-8 bg-white shadow-lg rounded-xl">
                         <p className="font-medium text-2xl text-gray-500">Orders</p>
                         <h2 className="font-semibold text-4xl text-gray-600 my-3">4,50k</h2>
-                        <div className="-ml-5 -mt-3">
-                            <ReactApexChart options={bar.options} series={bar.series} type="bar" height={100} width={150}/>
+                        <div className="-ml-6 -mt-3 mr-8">
+                            <ReactApexChart options={bar.options} series={bar.series} type="bar" height={100} width={'100%'}/>
                         </div>
                     </div>
  
                     <div className="pt-8 pl-8 bg-white shadow-lg rounded-xl">
                         <p className="font-medium text-2xl text-gray-500">Profit</p>
                         <h2 className="font-semibold text-4xl text-gray-600 my-3">3.62k</h2>
-                        <div className="-mt-6">
-                            <ReactApexChart options={line.options} series={line.series} type="line" height={108} width={140}/>
+                        <div className="-mt-6 mr-8">
+                            <ReactApexChart options={line.options} series={line.series} type="line" height={108} width={'100%'}/>
                         </div>
                     </div>
 
@@ -91,7 +91,7 @@ export default function ECommerce() {
                     </div>
                 </div>
 
-                <div className="reportRevenue bg-white col-span-2 shadow-lg rounded-xl overflow-hidden grid grid-cols-3">
+                <div className="reportRevenue bg-white lg:col-span-2 shadow-lg rounded-xl overflow-hidden grid grid-cols-3">
 
                     <div className="left col-span-2 border-0 border-r border-solid border-gray-200">
                         <div className="title flex justify-between items-center px-8 py-6">
@@ -108,8 +108,8 @@ export default function ECommerce() {
                             </div>
                         </div>
 
-                        <div className="ml-10 mt-4">
-                            <ReactApexChart options={doubleBar.options} series={doubleBar.series} type="bar" height={270} width={490}/>
+                        <div className="ml-7 mt-4">
+                            <ReactApexChart options={doubleBar.options} series={doubleBar.series} type="bar" height={270} width={'100%'}/>
                         </div>
                     </div>
 
@@ -118,7 +118,7 @@ export default function ECommerce() {
             </div>
 
             <div className="eCommerce__property grid grid-cols-3 gap-10 mb-8">
-                <div className="properties bg-white col-span-2 shadow-lg rounded-xl overflow-hidden">
+                <div className="properties bg-white col-span-2 shadow-lg rounded-xl overflow-x-scroll hideScrollBar">
                     <Table/>
                 </div>
                 <div className="schedule bg-white shadow-lg rounded-xl overflow-hidden">
