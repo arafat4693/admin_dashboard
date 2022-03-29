@@ -347,6 +347,28 @@ const doubleBarChart = {
   tooltip: {
     enabled: false,
   },
+  responsive: [
+    {
+      breakpoint: 500,
+      options: {
+        plotOptions: {
+          bar: {
+            columnWidth: '72%',
+          },
+        },
+      }
+    },
+    {
+      breakpoint: 360,
+      options: {
+        plotOptions: {
+          bar: {
+            columnWidth: '100%',
+          },
+        },
+      }
+    },
+  ]
 }
 }
 
@@ -607,22 +629,6 @@ const pieChart = {
         },
       },
       responsive: [
-      //   {
-      //   breakpoint: 1020,
-      //   options: {
-      //     grid: {
-      //       padding: {
-      //           top: -15,
-      //           bottom: -15
-      //       }
-      //   },
-      //     plotOptions:{
-      //       pie:{
-      //         customScale: 0.8,
-      //       }
-      //     }
-      //   }
-      // },
       {
         breakpoint: 768,
         options: {
@@ -639,26 +645,6 @@ const pieChart = {
           },
         }
       },
-      // {
-      //   breakpoint: 420,
-      //   options: {
-      //     plotOptions:{
-      //       pie:{
-      //         customScale: 0.8,
-      //       }
-      //     }
-      //   }
-      // },
-      // {
-      //   breakpoint: 350,
-      //   options: {
-      //     plotOptions:{
-      //       pie:{
-      //         customScale: 0.9,
-      //       }
-      //     }
-      //   }
-      // }
     ]
     },
   

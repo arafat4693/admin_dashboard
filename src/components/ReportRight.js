@@ -87,12 +87,12 @@ export default function ReportRight() {
 
     return (
         <div onClick={showBtn} className="right px-12 py-11 text-center">
-            <div className="btnGroup relative mb-10">
+            <div className="btnGroup relative mb-10 inline-block">
                 <button className="text-blue-500 py-2 pl-6 pr-4 rounded-lg border border-solid border-blue-500 activeButton" onKeyDown={pressingKeys}>
                     <span ref={btnRef} className="font-medium text-xl pr-5 pointer-events-none">2022</span> 
                     <i className="fas fa-chevron-down text-base pointer-events-none"></i>
                 </button>
-                <div ref={buttonsRef} className={`${btnGroup?'block':'hidden'} buttons bg-white shadow-lg absolute top-full left-24 overflow-hidden rounded-lg w-52 mt-3 z-10 border border-solid border-gray-200`}>
+                <div ref={buttonsRef} className={`${btnGroup?'block':'hidden'} buttons bg-white shadow-lg absolute top-full left-0 overflow-hidden rounded-lg w-52 mt-3 z-10 border border-solid border-gray-200`}>
                     <button onClick={selectBtn} className="block text-xl text-gray-500 font-medium py-4 pl-6 w-full text-left hover:buttonHover" data-index="1">2022</button>
                     <button onClick={selectBtn} className="block text-xl text-gray-500 font-medium py-4 pl-6 w-full text-left hover:buttonHover" data-index="2">2021</button>
                     <button onClick={selectBtn} className="block text-xl text-gray-500 font-medium py-4 pl-6 w-full text-left hover:buttonHover" data-index="3">2020</button>

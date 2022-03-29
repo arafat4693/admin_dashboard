@@ -91,10 +91,10 @@ export default function ECommerce() {
                     </div>
                 </div>
 
-                <div className="reportRevenue bg-white lg:col-span-2 shadow-lg rounded-xl overflow-hidden grid grid-cols-3">
+                <div className="reportRevenue bg-white lg:col-span-2 shadow-lg rounded-xl overflow-hidden grid grid-cols-1 md:grid-cols-3">
 
-                    <div className="left col-span-2 border-0 border-r border-solid border-gray-200">
-                        <div className="title flex justify-between items-center px-8 py-6">
+                    <div className="left md:col-span-2 border-0 border-r border-solid border-gray-200">
+                        <div className="title flex justify-between flex-col sm:flex-row items-center px-8 py-6">
                             <h2 className="text-3xl text-gray-500 font-medium">Revenue Report</h2>
                             <div className="colors flex gap-6 items-center">
                                 <p className="earnings flex gap-3 items-center text-xl text-gray-500 font-normal tracking-wider">
@@ -117,8 +117,8 @@ export default function ECommerce() {
                 </div>
             </div>
 
-            <div className="eCommerce__property grid grid-cols-3 gap-10 mb-8">
-                <div className="properties bg-white col-span-2 shadow-lg rounded-xl overflow-x-scroll hideScrollBar">
+            <div className="eCommerce__property grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-8">
+                <div className="properties bg-white md:col-span-2 shadow-lg rounded-xl overflow-x-scroll hideScrollBar">
                     <Table/>
                 </div>
                 <div className="schedule bg-white shadow-lg rounded-xl overflow-hidden">
@@ -138,7 +138,7 @@ export default function ECommerce() {
                         </div>
                         <TimeAddress Icon={NewspaperIcon} text="Sat, May 25, 2020" desc="10:AM to 6:PM"/>
                         <TimeAddress Icon={LocationMarkerIcon} text="Central Park" desc="Manhattan, New york City"/>
-                        <div className="scheduleBottom flex gap-4 items-center mt-8">
+                        <div className="scheduleBottom flex gap-4 items-center mt-8 mb-3">
                             <div className="scheduleImages flex">
                                 <ReactTooltip place="bottom" type="dark" effect="solid"  className="tooltip"/>
                                 <img src="/images/pic1.png" alt="user Image" className="scheduleImg__style ml-0" data-tip="nil dreyar"/>
@@ -151,9 +151,6 @@ export default function ECommerce() {
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div className="eCommerce__bottom grid grid-cols-3 gap-10 mb-16">
                 <div className="browserContainer bg-white overflow-hidden shadow-lg rounded-xl py-8 px-10">
                     <div className="browserHeader flex justify-between items-center">
                         <div className="content">
