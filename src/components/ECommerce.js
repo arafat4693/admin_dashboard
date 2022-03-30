@@ -30,7 +30,7 @@ export default function ECommerce() {
     return (
         <section className="eCommerce">
 
-            <Link to="/user/list" className="fixed bottom-16 right-5 text-xl bg-red-500 text-white font-semibold py-3 px-6 shadow-lg shadow-red-500 rounded-lg transition-all hover:shadow-none">Users List</Link>
+            <Link to="/user/list" className="z-50 fixed bottom-16 right-5 text-xl bg-red-500 text-white font-semibold py-3 px-6 shadow-lg shadow-red-500 rounded-lg transition-all hover:shadow-none">Users List</Link>
 
             <div className="eCommerce__statistics grid grid-cols-1 md:grid-cols-2 xlg:grid-cols-3 gap-10 my-8">
                 <div className="congrats bg-white shadow-lg p-7 rounded-xl overflow-hidden relative">
@@ -118,7 +118,7 @@ export default function ECommerce() {
             </div>
 
             <div className="eCommerce__property grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-8">
-                <div className="properties bg-white md:col-span-2 shadow-lg rounded-xl overflow-x-scroll hideScrollBar">
+                <div className="properties bg-white md:col-span-2 shadow-lg rounded-xl overflow-x-scroll mxl:overflow-hidden">
                     <Table/>
                 </div>
                 <div className="schedule bg-white shadow-lg rounded-xl overflow-hidden">

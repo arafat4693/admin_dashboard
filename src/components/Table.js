@@ -7,7 +7,7 @@ import Sales from './Sales'
 
 export default function Table() {
     return (
-            <table className="w-[820px] mxl:w-full">
+            <table className="min-w-[820px] w-full mxl:min-w-0 mxl:w-full">
                 <thead className="bg-gray-200">
                     <tr className="text-left">
                         <th className="th__style">COMPANY</th>

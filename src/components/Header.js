@@ -1,9 +1,16 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import Search from './Search'
 import { MenuIcon } from '@heroicons/react/outline'
+import {useDispatch} from 'react-redux'
+import {setMenu} from '../slice'
 
 export default function Header() {
     const [openSrc, setOpenSrc] = useState(false)
+    const dispatch = useDispatch()
+
+    function setMenuState(){
+        dispatch(setMenu())
+    }
 
     return (
         <header className="header w-full bg-white py-6 px-8 rounded-lg shadow-md flex justify-between items-center z-50 sticky top-0 left-0">
@@ -17,7 +24,7 @@ export default function Header() {
                     <i className="far fa-calendar text-3xl text-gray-500 hover:text-blue-500 transition-all duration-200 cursor-pointer"></i>
                     <i className="far fa-star text-3xl text-orange-400"></i>
                 </div>
-                <MenuIcon className="w-8 h-8 text-gray-500 cursor-pointer block lg:hidden"/>
+                <MenuIcon onClick={setMenuState} className="w-8 h-8 text-gray-500 cursor-pointer block lg:hidden"/>
                 <div className="header__right flex items-center gap-6">
                     <div className="flag flex items-center gap-2">
                         <span className="flag-icon flag-icon-se text-2xl"></span>
