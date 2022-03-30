@@ -3,10 +3,10 @@ import CustomCheck from './CustomCheck'
 
 export default function NotificationTable() {
   return (
-    <table className="w-full">
+    <table className="min-w-[737px] w-full mxl:min-w-0 mxl:w-full">
         <thead className="bg-gray-100">
             <tr>
-                <th className="dth__style text-gray-500 w-2/5 text-left">TYPE</th>
+                <th className="dth__style text-gray-500 text-left">TYPE</th>
                 <th className="dth__style text-gray-500">📧 EMAIL</th>
                 <th className="dth__style text-gray-500">🌉 BROWSER</th>
                 <th className="dth__style text-gray-500">👨‍💻 APP</th>
