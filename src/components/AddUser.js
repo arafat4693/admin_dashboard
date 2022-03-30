@@ -20,7 +20,7 @@ export default function AddUser({cancelForm, dispatch, Lb}) {
         const roleInfo = randomRole[userInfo['User Role']]
         const newUser = {
             id: Date.now(),
-            avatarImg: fullName.length===1?fullName.slice(0,2):`${fullName[0][0]}${fullName[1][0]}`,
+            avatarImg: fullName.length===1?`${fullName[0].slice(0,2)}`.toUpperCase():`${fullName[0][0]}${fullName[1][0]}`.toUpperCase(),
             avatarColor: avatarStyle[0],
             avatarBg: avatarStyle[1],
             user: [fullName.join(' ')],
