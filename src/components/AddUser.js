@@ -39,7 +39,7 @@ export default function AddUser({cancelForm, dispatch, Lb}) {
     }
 
     return (
-    <motion.div className={` addUser bg-white absolute top-0 right-0 h-screen w-98 normal-case`} initial={{x: "35rem"}} animate={{x: 0}}>
+    <motion.div className={` addUser bg-white absolute top-0 right-0 h-screen w-full sm:w-98 normal-case`} initial={{x: "35rem"}} animate={{x: 0}}>
         <h2 className="h-4.5 px-7 bg-gray-100 flex justify-between items-center text-2xl text-gray-600 font-medium">
             New User 
             <XIcon className="w-6 h-6 text-gray-500 cursor-pointer" onClick={cancelForm}/>

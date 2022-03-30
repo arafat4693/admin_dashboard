@@ -17,8 +17,8 @@ export default function DetailsInfo() {
     }
 
     return (
-    <div className="info col-span-2">
-        <nav className="detailsNav flex mb-8">
+    <div className="info md:col-span-2">
+        <nav className="detailsNav flex flex-wrap mb-8">
             {detailsNav.map(({navName, Icon}, index)=>(
             <button key={index} onClick={changeNav} className={`${navName===activeNav?'activeNav':'unActiveNav'} flex justify-center items-center px-8 py-5 text-2xl`}>
                 <Icon className="w-8 h-8 mr-2 pointer-events-none"/>

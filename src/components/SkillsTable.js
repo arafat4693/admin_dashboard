@@ -4,11 +4,11 @@ import Project from './Project'
 
 export default function SkillsTable() {
   return (
-    <table className="w-full">
+    <table className="min-w-[737px] w-full mxl:min-w-0 mxl:w-full">
         <thead className="bg-gray-100">
             <tr className="text-left">
-                <th className="dth__style text-gray-500 w-2/5">PROJECT</th>
-                <th className="dth__style text-gray-500 w-1/5">TOTAL TASKS</th>
+                <th className="dth__style text-gray-500">PROJECT</th>
+                <th className="dth__style text-gray-500">TOTAL TASKS</th>
                 <th className="dth__style text-gray-500">PROGRESS</th>
                 <th className="dth__style text-gray-500">HOURS</th>
             </tr>

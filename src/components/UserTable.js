@@ -63,22 +63,22 @@ export default function UserTable({showUsers,userSlice,setUserSlice, buttonActiv
         <>
         {
             allUsers.length?
-            <table className="w-full">
+            <table className="min-w-[1220px] w-full mxl:min-w-0 mxl:w-full">
                 <thead className="bg-gray-100">
                     <tr className="text-left">
-                        <th onBlur={e=>loseFocus(e.target.innerText)} onClick={e=>sortUsers(e.target.innerText)} tabIndex={0} className="th__style w-1/4 cursor-pointer group">
+                        <th onBlur={e=>loseFocus(e.target.innerText)} onClick={e=>sortUsers(e.target.innerText)} tabIndex={0} className="th__style cursor-pointer group">
                             USER 
                             <ChevronUpIcon className={`sortIcon__style ${!userState.status.user&&'opacity-0 group-hover:opacity-50'} ${userState.rotate.user?'rotate-180':'rotate-0'}`}/>
                         </th>
-                        <th onBlur={e=>loseFocus(e.target.innerText)} onClick={e=>sortUsers(e.target.innerText)} tabIndex={0} className="th__style w-1/6 cursor-pointer group">
+                        <th onBlur={e=>loseFocus(e.target.innerText)} onClick={e=>sortUsers(e.target.innerText)} tabIndex={0} className="th__style cursor-pointer group">
                             ROLE
                             <ChevronUpIcon className={`sortIcon__style ${!userState.status.role&&'opacity-0 group-hover:opacity-50'} ${userState.rotate.role?'rotate-180':'rotate-0'}`}/>
                         </th>
-                        <th onBlur={e=>loseFocus(e.target.innerText)} onClick={e=>sortUsers(e.target.innerText)} tabIndex={0} className="th__style w-1/6 cursor-pointer group">
+                        <th onBlur={e=>loseFocus(e.target.innerText)} onClick={e=>sortUsers(e.target.innerText)} tabIndex={0} className="th__style cursor-pointer group">
                             PLAN
                             <ChevronUpIcon className={`sortIcon__style ${!userState.status.plan&&'opacity-0 group-hover:opacity-50'} ${userState.rotate.plan?'rotate-180':'rotate-0'}`}/>
                         </th>
-                        <th onBlur={e=>loseFocus(e.target.innerText)} onClick={e=>sortUsers(e.target.innerText)} tabIndex={0} className="th__style w-1/6 cursor-pointer group">
+                        <th onBlur={e=>loseFocus(e.target.innerText)} onClick={e=>sortUsers(e.target.innerText)} tabIndex={0} className="th__style cursor-pointer group">
                             BILLING
                             <ChevronUpIcon className={`sortIcon__style ${!userState.status.billing&&'opacity-0 group-hover:opacity-50'} ${userState.rotate.billing?'rotate-180':'rotate-0'}`}/>
                         </th>

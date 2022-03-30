@@ -1,13 +1,18 @@
 import React,{useRef} from 'react'
 import {Link} from "react-router-dom";
+import {setMenu} from '../slice'
+import {useDispatch} from 'react-redux'
+
 
 export default function SubMenu({name, iconName, active, setActive, collapse, setParent, setNParent, loc}) {
     const nameRef = useRef()
-    
+    const dispatch = useDispatch()
+
     function activeMenu(){
         setActive(nameRef.current.innerText.toLowerCase())
         setParent(collapse||'')
         setNParent(null)
+        dispatch(setMenu())
     }
 
     return (

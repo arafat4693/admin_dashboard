@@ -64,7 +64,7 @@ export default function Users() {
   return (
     <section className="users">
 
-        <div className="totalUsers grid grid-cols-4 gap-10 my-8">
+        <div className="totalUsers grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 my-8">
             <TotalUser amount="45,443" desc="Total Users" Icon={UserIcon} bg="bg-indigo-100" color="text-indigo-500"/>
             <TotalUser amount="5,937" desc="Paid Users" Icon={UserAddIcon} bg="bg-red-100" color="text-red-500"/>
             <TotalUser amount="23,474" desc="Active Users" Icon={UserGroupIcon} bg="bg-green-100" color="text-green-500"/>
@@ -73,7 +73,7 @@ export default function Users() {
         
         <div className="filtersContainer bg-white px-8 py-6 rounded-xl shadow-lg mb-8">
           <h3 className="filterHeader font-medium text-3xl text-gray-600 pb-8">Filters</h3>
-          <div className="filterBody grid grid-cols-3 gap-10">
+          <div className="filterBody grid grid-cols-1 md:grid-cols-3 gap-10">
             <UserFilter setPowerState={setPowerState} option="Role" setting={role}/>
             <UserFilter setPowerState={setPowerState} option="Plan" setting={plan}/>
             <UserFilter setPowerState={setPowerState} option="Status" setting={status}/>
@@ -81,7 +81,7 @@ export default function Users() {
         </div>
 
         <div className="usersContainer bg-white rounded-xl shadow-lg mb-16">
-          <div className="usersContainer_header px-7 py-6 flex items-center justify-between">
+          <div className="usersContainer_header px-7 py-6 flex sm:flex-row flex-col sm:items-center items-start justify-between gap-4">
 
             <div className="userEntries">
               <label htmlFor="rows" className="label__style">show</label>
@@ -93,7 +93,7 @@ export default function Users() {
               <label htmlFor="rows"  className="label__style">Entries</label>
             </div>
 
-            <div className="addUser flex gap-5 items-center">
+            <div className="addUser flex gap-5 items-start sm:flex-row flex-col sm:items-center">
               <div className="inputBox">
                 <label htmlFor="input" className="label__style mr-3">search:</label>
                 <input type="search" id="input" className="input__style normal-case" onChange={e=>setInputState(e.target.value)}  value={inputState}/>
@@ -102,8 +102,9 @@ export default function Users() {
             </div>
 
           </div>
-
-          <UserTable showUsers={showUsers} userSlice={userSlice} setUserSlice={setUserSlice} buttonActive={buttonActive} allUsers={filteredUsers}/>
+          <div className="bg-white overflow-x-scroll mxl:overflow-hidden">
+            <UserTable showUsers={showUsers} userSlice={userSlice} setUserSlice={setUserSlice} buttonActive={buttonActive} allUsers={filteredUsers}/>
+          </div>
 
             {filteredUsers.length !== 0 &&
             <div className="userNav_container flex justify-end py-7 px-4">

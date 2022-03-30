@@ -3,12 +3,12 @@ import { HashtagIcon, TrendingUpIcon, CheckCircleIcon, PaperAirplaneIcon, EyeIco
 
 export default function InvoiceTable() {
   return (
-<table className="w-full">
+<table className="min-w-[737px] w-full mxl:min-w-0 mxl:w-full">
         <thead className="bg-gray-100">
             <tr className="text-left">
-                <th className="dth__style text-gray-500 w-1/5"><HashtagIcon className="w-5 h-5 text-gray-500"/></th>
-                <th className="dth__style text-gray-500 w-1/5"><TrendingUpIcon className="w-6 h-6 text-gray-500"/></th>
-                <th className="dth__style text-gray-500 w-1/5">TOTAL PAID</th>
+                <th className="dth__style text-gray-500"><HashtagIcon className="w-5 h-5 text-gray-500"/></th>
+                <th className="dth__style text-gray-500"><TrendingUpIcon className="w-6 h-6 text-gray-500"/></th>
+                <th className="dth__style text-gray-500">TOTAL PAID</th>
                 <th className="dth__style text-gray-500">ISSUED DATE</th>
                 <th className="dth__style text-gray-500">ACTION</th>
             </tr>

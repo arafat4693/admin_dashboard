@@ -36,7 +36,7 @@ export default function UserDetail() {
         <>
     {id?
     <>
-    <section className="userDetail grid grid-cols-3 gap-10 mb-16 mt-10">
+    <section className="userDetail grid grid-cols-1 md:grid-cols-3 gap-10 mb-16 mt-10">
         <div className="detail col-span-1">
 
             <div className="aboutUser bg-white rounded-xl shadow-md pt-20 mb-10">
